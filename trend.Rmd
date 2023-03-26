@@ -1,0 +1,68 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Cyber Crime Trend India
+
+**Jaswinderpal Singh**
+
+
+**Reading trend data**
+```{r}
+data = read.csv("trenddata.csv")
+y = data$creg
+x = data$year
+rate = round(data$creg/data$midpopln, 4)
+plot(data[,1:2], pch = 20, col = "blue4", xlab = "Year", ylab = "Cases Registered")
+lines(data[,1:2])
+```
+
+**Rate Plots**
+
+```{r}
+rda = data.frame(data$year, rate)
+plot(rda, pch = 20, col = "blue4")
+lines(rda)
+```
+
+**Percentage Increase**
+```{r}
+source("project_funcs.R")
+dfi = cbind(data, per_inc =  round(pinc(data$creg),4) )
+dfi
+pdat = data.frame(year = dfi$year,per_inc =  dfi$per_inc)
+plot(pdat, pch = 20, col = "blue4", xlab = "Year", ylab = "Percentage Increase in Cases")
+lines(pdat)
+abline(h = 0)
+```
+
+**Analysis**
+
+```{r}
+model1 = lm(y~x) 
+summary(model1)
+model2 = lm(y~ poly(x,2,raw = TRUE) )
+summary(model2)
+model3 = lm(log(y)~ x )
+summary(model3)
+```
+
+**Predictions**
+```{r}
+x_axis = 2002:2021
+data.frame(year = data$year, actual = data$creg, linear = predict(model1, data.frame(x = x_axis)), quad = predict(model2, data.frame(x = x_axis)), loge = exp(predict(model3, data.frame(x = x_axis)))  )
+```
+
+**Fits**
+```{r}
+plot(data[,1:2], pch = 20, col = "blue4")
+curve( exp(predict(model3, data.frame(x))), from = 2000, to = 2025, add = TRUE, lwd = 1.5, col = "red")
+```
+
+```{r}
+cregis = exp(predict(model3, data.frame(x = 2022:2030)) )
+cregis = c(data$creg[x == 2021] , cregis)
+data.frame(year = 2021:2030, cregis )
+```
+
