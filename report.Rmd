@@ -280,6 +280,7 @@ sum(major_states21)/df[40,5]
 
 **The above value indicates that almost 71.12168 % of the total cyber crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam. However, they together contributed almost 36% of the Indian Population**
 
+### Cyber Crimes Trend: Major States
 
 These States can be analyzed further based on last 5 years as follows:
 
@@ -320,7 +321,6 @@ barut2020_21r
 source("cybertrend.R")
 cyber_trend
 ```
-Also, Mid-Year Projected Population of India for each year is available, hence in terms of rates:
 
 ```{r}
 cyber_trendr

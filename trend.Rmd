@@ -10,6 +10,7 @@ output:
 
 **Reading trend data**
 ```{r}
+rm(list = ls())
 data = read.csv("trenddata.csv")
 y = data$creg
 x = data$year
@@ -46,12 +47,33 @@ model2 = lm(y~ poly(x,2,raw = TRUE) )
 summary(model2)
 model3 = lm(log(y)~ x )
 summary(model3)
+t = 1:20
+model4 = lm(log(rate)~ t )
+summary(model4)
+```
+
+**Durbin Watson Test**
+
+```{r}
+library(lmtest)
+dwtest(model4)
+dwtest(model3)
 ```
 
 **Predictions**
 ```{r}
 x_axis = 2002:2021
-data.frame(year = data$year, actual = data$creg, linear = predict(model1, data.frame(x = x_axis)), quad = predict(model2, data.frame(x = x_axis)), loge = exp(predict(model3, data.frame(x = x_axis)))  )
+data.frame(year = data$year, actual = data$creg, rate, linear = predict(model1, data.frame(x = x_axis)), quad = predict(model2, data.frame(x = x_axis)), loge = exp(predict(model3, data.frame(x = x_axis))), log4 = exp( predict(model4, data.frame(x = x_axis) ) )  )
+```
+
+**Fits**
+```{r}
+m4 = function(t){
+  exp(-4.26073 + 0.28345 * t)
+}
+dt = data.frame(t, rate)
+plot(dt, pch = 20, col = "blue4")
+curve( m4, from = 1, to = 25, add = TRUE, lwd = 1.5, col = "red")
 ```
 
 **Fits**
@@ -59,6 +81,8 @@ data.frame(year = data$year, actual = data$creg, linear = predict(model1, data.f
 plot(data[,1:2], pch = 20, col = "blue4")
 curve( exp(predict(model3, data.frame(x))), from = 2000, to = 2025, add = TRUE, lwd = 1.5, col = "red")
 ```
+
+
 
 ```{r}
 cregis = exp(predict(model3, data.frame(x = 2022:2030)) )
