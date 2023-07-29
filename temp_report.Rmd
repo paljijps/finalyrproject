@@ -1,0 +1,1459 @@
+---
+title: '**Cyber Crimes in India**'
+documentclass: report
+date: "June 30, 2023."
+output:
+  word_document: default
+  pdf_document:
+    latex_engine: xelatex
+    number_sections: yes
+papersize: a4
+fontsize: 14
+geometry: margin=1in
+mainfont: Times New Roman
+---
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{Cyber Crimes in India}
+            
+        \vspace{0.3cm}
+        \LARGE
+        Project Report
+            
+        \vspace{1.5cm}
+            
+        \textbf{Jaswinderpal Singh, Hitika, Jasmeen Sharma,} \\
+        \textbf{Kajol, Kanishka Jaggi, Kartik Setia} \\
+        
+        \vspace{0.5cm}
+        
+        M.Sc. Statistics, Semester - 4. \\
+        
+        \vspace{1cm}
+        
+        \underline{Under the guidance of} : Prof. Narinder Kumar
+        
+         
+        \vspace{4cm}
+    
+            
+        \includegraphics[width=0.4\textwidth]{logo.png}
+            
+        \Large
+        Department of Statistics\\
+        Panjab University, Chandigarh - 160014 (India) \\
+        
+        \vspace{0.5cm}
+        
+        June 30, 2023.
+            
+    \end{center}
+    
+\end{titlepage}
+
+
+\chapter*{Introduction}
+
+***Cyber Crimes***
+
+Cyber crimes are a new class of crimes rapidly increasing due to extensive use of Internet and I.T. enabled services.  Any criminal activity with the use of computers, networks, or the internet for the exploitation of data and resources comes under cyber crimes. Examples include hacking, identity theft, phishing scams, and distributing malware etc. Women are commonly targeted for cyber stalking, cyber pornography, impersonation etc. 
+
+Cyber crimes are a new class of crimes rapidly increasing due to extensive use of Internet and I.T. enabled services.
+
+Situation is getting worse with every passing year and at the same time lack of awareness in terms of digital literacy is still there. As per the latest joint report published on May 3, 2023 by the Internet and Mobile Association of India (IAMAI) and data analytics firm ‘Kantar’, the active Internet users in India are more than 50% of the country’s population. The Cyber Crimes started increasing rapidly by the years 2015-2016. Phishing, Identity Theft, Computer Related Offenses, Frauds, Cyber-Bullying, Spamming, data leaks etc. are major Cyber Crimes on the increase in India. India reported **52,974** fresh incidents of cyber-crimes in 2021, an increase of nearly six percent from the year before, in which 50,035 was the number as per Crime in India (2021) Statistics of the National Crime Record Bureau.
+
+**Objectives**
+
+• To analyze the year-wise trend and future prediction of the number of cyber-crimes registered in India using the data from 2002 - 2021.         
+• State and U.T. - wise comparisons for the cyber-crimes incidence.         
+• Application of Non-Parametric tests to check similarity of distributions and randomness of cases, keeping the population variation of the states under consideration.            
+• To identify major cyber-crime motives in India.           
+• Dividing States into clusters based on their fraud cyber crimes in the years 2017-2021.        
+
+**Keywords:** Cyber Crimes, Phishing, Malware, Fraud, Statistics, Non-Parametric Inference, Statistical Cluster Analysis.
+
+**Major Cyber Crimes in India**
+
+Some major cyber crimes in India include:         
+1. *Hacking:* Unauthorized access to computer systems, networks, or websites to steal sensitive information or disrupt operations.        
+2. *Phishing:* Attempts to trick individuals into providing personal or financial information through fake emails or websites.    
+3. *Identity Theft:* Using someone else's personal information to commit fraud or other crimes.   
+4. *Fraud:* Using the internet to scam people out of their money or personal information.   
+5. *Cyberstalking:* Harassment or bullying through electronic means.    
+6. *Child pornography:* Using the internet to distribute or view child pornography.   
+7. *Ransomware:* A type of malware that encrypts a victim's files and demands payment to restore access.   
+8. *Crypto jacking:* Unauthorized use of someone's computer or device to mine cryptocurrency.   
+9. *Distributed Denial of Service (DDoS) attacks:* Overwhelming a website or network with traffic to make it unavailable.        
+10. *Spamming:* Sending unsolicited messages through email or other means.
+
+Various studies are done as far as cyber-crimes in India are concerned. M. Dasgupta (2009) has classified the cyber-crimes on different basis and grounds like computer as a target as well as victim. A. Bhangla and J. Tuli (2021) conducted the study on the legal framework of cyber-crimes in India.
+
+
+\tableofcontents
+
+\newpage
+
+# Cyber Crimes in India: Trend and Future Prediction
+
+
+## Introduction
+
+In this section, the main objective is to have a visualization of the datasets and to figure out which states and Union Territories have Major role in the Cyber Crimes in India in the past few years. Also, the Cyber Crime registration trend for the country is analyzed over the years and predictions are made for the coming years.
+
+## Cyber Crimes State-Wise:
+
+
+### Year 2020
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+source("viz2021.R")
+
+barst2020
+```
+
+
+The above figure shows the highest number of cases being registered in Uttar Pradesh, followed by Karnataka, Maharashtra and Telangana. But one must note that the population in these states may vary. So to get a better comparison, rates can be calculated, which gives the cyber crime cases registered in the state per 1 lakh population.
+Mid year projected population for each state for the year 2020 is available. Hence the Cyber Crime Rate can be calculated as:  
+
+
+$$\text{Rate} = \frac{\text{No.of cases registered} }{\text{Mid year projected population (in lakhs)} }$$
+
+
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+barst2020r
+```
+As far as the rates are concerned, Karnataka and Telangana emerged as the states with highest cyber crime rates followed by Assam, Uttar Pradesh and Maharashtra.
+
+Now, keeping the population variation of the states into account, the better comparative picture here is given by the rates. Now, it can be seen that the state of Karnataka has the maximum cyber crime rate of 16.15 cyber crimes registered per 1 lakh population in the year 2020, followed by Telangana and Assam with cyber crime registeration rate of 13.38 and 10.15 cases per 1 lakh population.
+
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+major_states20 = df$cases_reg2020[ which(df$state %in% c("Telangana", "Assam", 
+                            "Uttar Pradesh", "Karnataka", "Maharashtra") ) ]
+sum(major_states20)/df[40,4]
+```
+**The above value indicates that almost 71.72579 % of the total cyber crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam.**
+
+### Year 2021
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+barst2021
+```
+
+From the above figure it looks like Telangana tops the Cyber Crimes tally followed by Uttar Pradesh and Karnataka in 2021.        
+It can be noticed that the cyber crimes in the state of Telangana almost doubled in a year, which is a matter of huge concern.       
+
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+barst2021r
+```
+           
+But for better comparison, the Cyber Crime Rates, i.e. Cyber Crimes in a State per 1 lakh population, can be seen.         
+Now, from here it is evident that infact Telangana is the state with highest cyber crime rate of **27.28** cases per 1 lakh population, followed by Assam and Karnataka with rates **13.78** and **12.15** respectively.
+
+Also, the cyber-crimes in Assam are also increasing with every passing year.        
+However, Karnataka registered slightly lesser number of cyber-crimes this year as compared to the previous year.           
+Despite all, There is no cyber-crime case registered in Sikkim as per the record of National Crime Records Bureau (NCRB) in the past few years. 
+
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+major_states21 = df$cases_reg2021[ which(df$state %in% c("Telangana", "Assam", 
+                            "Uttar Pradesh", "Karnataka", "Maharashtra") ) ]
+sum(major_states21)/df[40,5]
+```
+
+**The above value indicates that almost 71.12168 % of the total cyber-crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam. However, they together contributed almost 36% of the Indian Population**
+
+Now, for the past 5 years, the cyber crime trend in these 5 major states is to be viewed. The trend is  shown for each state for the years 2017 - 2021.  The data can be visualized both in terms of actual crime registered count as well as in terms of rates in these states.
+
+### Cyber Crimes Trend: Major States
+
+From the above analysis, it can be seen that the states of Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam have comparatively higher cyber-crime rates as well as larger number of cyber-crimes registered in the last two years. Now, it is of interest to analyze these states based on their records of the previous years.
+
+These States can be analyzed further based on last 5 years as follows:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+j = 1
+for (i in statelist) {
+  cat("\n",nam[j],"\n")
+  show(trend_plot(i,  paste("Cyber Crime Trend",nam[j],"2017 - 2021"), i$cases, "No. of Cyber Crimes Registered") )
+  cat("\n", "\n")
+  show(trend_plot(i,  paste("Cyber Crime Rates Trend",nam[j],"2017 - 2021"), i$rates, "No. of Cyber Crimes Registered per 1 lakh population") )
+  cat("\n")
+  j = j+1
+}
+```
+  
+Now, it is evident from that the states of Assam and Telangana are showing rapid increasing trend in Cyber Crimes in last 5 years. However, U.P. and Karnataka are registering some lesser number of cases as compared to previous years.     
+
+## Cyber Crimes U.T. - wise
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+uttrend2
+```
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+barut2020_21
+```
+
+
+In terms of numbers, the Union Territory of Delhi registered the most 356 cyber crime cases in 2021, followed by Jammu&Kashmir and Chandigarh with 154 ans 15 cases respectively. Also, **the cases in Delhi are more than double in 2021 from 2020.** However, in terms of rates, the picture is somewhat like this in all the Union Territories: 
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+barut2020_21r
+```
+
+
+## Cyber Crime Trend India
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+source("cybertrend.R")
+cyber_trend
+```
+
+Now, the above plot shows the Trend for the number of Total Cyber Crimes registered in overall India from the year 2002 - 2021.
+
+Now, it is evident from the plot, that India registered more than **4 times** cyber crimes in 2021 as compared to 2016.
+
+Also, in a span of an year, India registered **1.5 times** more Cyber Crime cases in 2018 from 2017. And if we see 2018 from 2016, then the registration of the cases is **just above double**.
+
+Also, one may note that initially, from the years 2002 - 2009, the cases registered were much much lower due to the fact that the internet was not that cheaply and easily accessible for the people of India.    
+But from the year 2016 to 2017, the cyber-crimes were **almost doubled** due to the fact that in this year the telecom sector in India experienced drastic changes with the entry of Jio in the Telecom Market. To tackle with their business strategies, other telecom networks reduced the data charges to a huge extent, leading to a very large increase in the internet accessibility among the Indian Population. 
+
+Also, it is a fact that the population of India also varied in these years. For that matter, we can observe the Cyber Crime Registration Rate of India from 2002 - 2021 as follows: 
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+cyber_trendr
+```
+
+The cyber crime rate prediction for the coming years can be done using the following fitted model:
+
+$$\log(Y_t) = -4.26073 + 0.28345 \ t$$
+or
+$$Y_t = \exp(-4.26073 + 0.28345 \ t)$$
+where:      
+t $\geq$ 1        
+$Y_t$ : Predicted Cyber Crime Rate in India for the year $(2001 + t)$
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+summary(model4)
+```
+
+Clearly, from the summary of the model, it is evident that the values of $R^2$ and Adjusted $R^2$ do not differ much. Here t denotes the time index. t = 2 corresponds to the year 2002, upto so on t = 20 for the year 2021. The parameter estimates are coming out to be highly significant.
+
+The plot of the fitted curve along with the actual values as dots is shown below:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+fitplot
+```
+
+The Cyber Crime Rates predicted for the coming years using the above model are:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+rate.prediction
+```
+
+
+To get a more clear idea about the previous year comparison, percentage increase in the cases can be calculated using the formula:   
+
+
+$$ \text{Percentage Increase} =  \frac{\text{Current Value - Previous Value}}{\text{Previous value}} *100$$
+
+
+From the Percentage Increase plot, following facts can be noted:
+
+- India registered 5.87% more cyber crimes in 2020 as compared to 2021.       
+- It must be noted that the any dip in the graph does not mean decrease in the crimes, rather it means that there is less percentage increase in the cases as compared to previous year. However any point below zero, i.e. negative percentage increase indicates that there are lesser number of cases from the previous year.
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+cyber_trendp
+```
+
+**Internet user-base of India**
+
+Besides these cyber-crime incidents and trend analysis, one should also have a look on the active internet users in India over the years. Data of active internet users in the country is taken from the world bank and visualized as follows:        
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+net_usep
+```
+
+It can be seen that the percentage of internet users in the country has increased in the last
+few years. 43% population of India had access to the internet by the year 2020. According
+to a report by Tanushree Basuroy (2022), it was estimated that in 2025, number of active
+internet users would surpass 900 million in the country. In fact, India was ranked as
+the second largest online market worldwide in 2019, coming second only to China. The
+number of internet users was estimated to increase in both urban as well as rural regions,
+indicating a dynamic growth in access to internet.
+
+
+# Cyber Crime Motives
+
+
+## Introduction
+
+In this section, the motives behind the emerging cyber crime incidents in India are analyzed. Major motive is figured out and states are futher analyzed for that for the past few years. Cluster Analysis Technique is used to divide states into two groups (clusters) based on their crime incidence for the major motive keeping mid year projected population under consideration.          
+
+
+## Cyber Crime Motives Year Wise
+
+### Year 2020
+
+```{r, warning=FALSE,echo=FALSE, message=FALSE}
+source("cybermotives.R")
+motives2020
+```
+
+From the above figure, it is evident that, in 2020, the major motive behind the cyber crimes in India was Fraud, contributing to 60% of the total cyber crimes in India.
+
+### Year 2021
+
+Again in the next consecutive year 2021, it can be seen that Fraud emerges as the major cyber crime motive in India, contributing to 60.24% of the total cyber crimes in the country.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+motives2021
+```
+
+
+## Cluster Analysis
+
+For the fraud cases, different states of India are divided into different clusters based on the fraction of fraud in the total cyber crimes in that states for the years 2017 to 2021.
+
+States are divided into clusters using:       
+- K-Means Clustering (Non-Hierarchical)              
+- Agglomerative Cluster Analysis (Hierarchical)       
+- Divisive TCluster Analysis (Hierarchical)        
+
+
+### Distance Matrix Calculations
+
+Data has been scaled to centre 0, and unit variability of each year rate (Variables).
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+source("clusterana.R")
+dist[1:3, 1:3]
+```
+
+This is some part of the 28x28 distance matrix of states.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+# displot
+```
+
+### K-Means Clustering (Non-Hierarchical)
+
+To determine the optimum number of clusters, consider the following plot of number of clusters v/s Total within sum of squares.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+wssplot
+```
+
+According to the above plot, the Total within sum of squares starts flattening after k = 2.
+
+We now proceed with **K-Means clustering** with 2 clusters.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$cluster
+```
+This is the required clustering of 28 states into 2 clusters.
+
+Define $$ Z_{ji} = 1, \qquad if \ \bf{X_i} \in \ jth \ cluster $$
+
+and $$ Z_{ji} = 0, \qquad if \ \bf{X_i} \notin \ jth \ cluster $$
+
+where $\bf{X_i}$ is the ith case vector. i = 1,2,...   N.    
+
+Let $\bf{m_j}$ be the mean vector of jth cluster, and $\bf{m}$ be the grand mean.
+
+Let $n_j$ be the number of elements in the jth cluster.
+
+The Within cluster sum of squares vector are given by: 
+
+
+$$WSSV = diag(S_W)$$, 
+
+where 
+
+$$S_W = \frac{1}{N}   \sum_{j=1}^{g} \sum_{i = 1}^{N} Z_{ji} \bf{(X_i - m_j)(X_i - m_j)'} $$
+
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$withinss
+```
+
+The Total Within cluster sum of squares are given by:
+
+$$WSS = trace(S_W)$$, where $$S_W = \frac{1}{N}   \sum_{j=1}^{g} \sum_{i = 1}^{N} Z_{ji} \bf{(X_i - m_j)(X_i - m_j)'} $$
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$tot.withinss
+```
+
+and Between Cluster Sum of Squares are:
+
+$$BSS = trace(B_W)$$, where $$B_W = \frac{1}{N}   \sum_{j=1}^{g}  n_j \bf{(m_j - m)(m_j - m)'} $$
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$betweenss
+```
+
+The Total cluster sum of squares are given by:
+$$TSS = WSS + BSS$$
+
+$\frac{WSS}{TSS}$ must be small. 
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$tot.withinss/km.res$totss
+```
+
+
+To have a better picture of the clusters, a look on the cluster plot will be helpful:
+
+#### Cluster Plot
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+clusplot
+```
+
+1. As it is evident from the above cluster plot that the states with fewer fraud Cyber Crimes : Arunachal Pradesh and Nagaland are in one cluster.        
+
+2. However the states with extensive fraud rates: Karnataka, Bihar,Telangana, Jharkhand,Uttar Pradesh, Maharashtra etc. are in other cluster.
+ 
+### Hierarchical Clustering
+
+#### Agglomerative Clustering
+
+Also, under the Hierarchical Clustering, using **Agglomerative  Custering** with *Ward D2 Linkage*, the states are more likely to be divided into 2 clusters.
+
+The states with major fraction of the Fraud cases are in one cluster: Telangana, Jharkhand, Bihar etc.
+
+However, the states with comparatively lesser number of frauds are in the other cluster.
+
+The cluster means are given by
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+cameans1 # 1st cluster mean
+cameans2 # 2nd Cluster mean
+
+```
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+aglodend
+aglocp
+```
+Previously, for better demarkation, we applied K-Means clusteing for 4 clusters. However, under the Hierarchical Clustering, using **Agglomerative  Custering** with *Ward D2 Linkage*, the states are more likely to be divided into 2 clusters.
+
+#### Divisive Clustering
+
+On the other hand, if **Divisive Clustering** is applied, the two main clusters so formed are given as follows:
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+dianadend
+```
+
+
+
+
+
+# Analysis of Cyber crimes under IT Act and IPC Act  
+
+
+## Introduction
+
+### Information Technology ACT, 2000
+
+The IT Act was introduced in 17 October 2000. It is the primary law in India dealing with cyber crime and electronic commerce. The original Act contained 94 sections, divided into 13 chapters and 4 schedules. The laws apply to the whole of India. If a crime involves a computer or network located in India, persons of other nationalities can also be indicted under the law.
+The sections of IT Act included in the analysis are
+
+- Tampering Computer Source Documents (Section 65)						
+- Computer Related Offenses (Sec 66 & Sec 66 B to E)(Total)						
+- Cyber Terrorism (Section 66F)						
+- Publication/ transmission of obscene / sexually explicit act in electronic form 					
+
+![rates section-wise yearly it-act cases]("photos/it.png")
+
+
+
+The figure 3.1 shows the rate of cases of Information Technology Act, 2000 being registered in India per 1 lakh population in years 2016-21. One must note that the Computer Related Offenses (Sec 66 & Sec 66 B to E) are reported mostly.
+
+
+
+#### Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+This includes punishment regarding sending offensive messages through communication service,punishment for dishonestly receiving stolen computer resource or communication, punishment for identity theft, punishment for cheating by personation by using computer resource, Punishment for violation of privacy, penalty and compensation for damage to computer, computer system, etc.
+
+
+### Indian Penal Code , 1862
+
+The Indian Penal Code (IPC) is the official criminal code of India. It is a comprehensive code intended to cover all substantive aspects of criminal law. It came into force in India during the British rule in 1862. 
+The sections of IPC included in the analysis are
+
+- Data theft (Sec.379 to 381)						
+- Fraud (Sec.420 r/w Sec.465,468-471 IPC)						
+- Cheating (Sec.420)						
+- Forgery (Sec.465, 468 & 471)
+
+![rates section-wise yearly ipc-act cases]("photos/ipc.png")
+
+
+
+The figure 3.2 shows the rate of cases of Indian Penal Code (here only those sections are included which include punishments to cyber-crimes ) being registered in India per 1 lakh population in years 2016-21. One must note that the Fraud cases are reported mostly.
+
+#### Fraud (Sec.420 r/w Sec.465,468-471 IPC)	
+
+This include that whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment and shall also be liable to fine.
+
+
+## Percentage share of major crimes under IT Act and IPC
+
+```{r, echo=FALSE,warning =FALSE, message=FALSE}
+
+rm(list = ls())
+library(readxl)
+d<-read_excel("dataset.xlsx", sheet = "Sheet4")
+yr<-d[[1]]
+cro<-d[[3]]
+fr<-d[[8]]
+t<-d[[15]]
+
+pshare = function(x,y){
+per_sh = c()
+for (i in 1:length(x)) {
+per_sh[i] = (x[i]/y[i]) 
+}
+return(100*per_sh)
+}
+cbind(year=yr,CRO=cro,Total=t, per_share = round(pshare(cro,t),4))
+cbind(year=yr,Fraud=fr,Total=t, per_share = round(pshare(fr,t),4))
+
+```
+
+The above data table shows that Computer Related Offenses (Sec 66 & Sec 66 B to E) ,( here , Computer Related Offenses (Sec 66 & Sec 66 B to E) is named CRO ) , has been contributing about 48% and Fraud contribute about 15% of the total cyber crimes each year  as per the NCRB data for cyber crimes from year 2016 - 2021. Hence Computer Related Offenses (Sec 66 & Sec 66 B to E) is the major contributor to the cyber crimes in India.
+
+
+## Randomness and Association
+
+### 1-sample Run test for randomness
+
+1-sample run test is used to test whether the observations are random
+
+#### Computer related offenses (Sec 66 & Sec 66 B to E) 
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+cro_c<-d[[22]]
+library(DescTools)
+RunsTest(cro_c)
+```
+
+This shows that year wise incidence of cases of Computer related offenses are random .
+
+#### Fraud
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+fr_c <- d[[23]]
+RunsTest(fr_c)
+```
+
+This shows that year wise incidence of cases of Fraud are random .
+
+### Kolmogorov Smirnov test
+
+This test is used for testing whether both the samples come from same distribution
+
+Test statistics,
+
+$$D_{n,m} = \sup_{x} |F_{1,n}(x) - F_{2,m}(x) |$$
+
+where $F_{1,n}$ and $F_{2,m}$ are the empirical distribution functions of the first and the second sample respectively, and *sup* is the supremum function.
+
+```{r, echo = FALSE, warning= FALSE, message=FALSE}
+
+data<-read_excel("levene.xlsx", sheet = "Sheet5")
+y2016 <- data[[5]]
+y2017 <- data[[6]]
+y2018 <- data[[7]]
+y2019 <- data[[8]]
+y2020 <- data[[9]]
+y2021 <- data[[10]]
+
+ks.test(y2016,y2021)
+ks.test(y2017,y2021)
+ks.test(y2018,y2021)
+ks.test(y2019,y2021)
+ks.test(y2020,y2021)
+
+```
+
+This shows that the distribution of computer related offenses throughout the states remains the same in the years 2016 - 2021 i.e. cases are concentrated in specific states and are distributed similarly each year.
+
+
+### Kendall Tau Measure of Association
+
+It is a non-parametric measure based on ranks of the data.
+
+$H_0$: There is no significant association between the variables.
+$H_1$: There is significant association between the variables.
+
+Test Statistic
+
+$$ \tau = \frac{C-D}{C+D} $$
+where C = number of concordant pairs.     
+and D = number of discordant pairs.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+cor.test(cro_c,fr_c,method="kendall")
+```
+
+This shows that there is no association between cyber crimes under Computer Related Offenses (Sec 66 & Sec 66 B to E) and Fraud.
+
+
+## Testing variability and location
+
+Now, checking for variability w.r.t location and scale for Computer Related Offenses (Sec 66 & Sec 66 B to E) in years 2016-21 using Levene's Test for variability and Kruskal Wallis Test for location.
+
+### Levene Test for the equality of variances.
+
+Let $\sigma_{i}^2$ denote the variance of the ith population, i = 1,2, ...  , k.  
+$H_0$: $\sigma_{1}^2 = \sigma_{2}^2 = \ ... \ = \sigma_{k}^2$     
+$H_1$: Atleast one pair of $\sigma^2$'s differ.       
+
+Test Statistic
+$$W = \frac{(N-k)} {(k-1)}.
+               \frac{\sum_{i=1}^{k}N_{i}(\bar{Z}_{i.}-\bar{Z}_{..})^{2} }
+               {\sum_{i=1}^{k}\sum_{j=1}^{N_i}(Z_{ij}-\bar{Z}_{i.})^{2} }$$
+
+
+where,
+k: number of different groups to which the sampled cases belong.            
+$N_{i}$: Number of elements in different groups.        
+N: total number of cases in all groups            
+
+
+Here, $Z_{ij}$ can have one of the following three definitions:
+
+1. $Z_{ij} = |Y_{ij} − \bar{Y_{i.}}|$ , where $\bar{Y_i}$. is the mean of the i-th subgroup.
+
+2. $Z_{ij} = |Y_{ij} − \tilde{Y_i.}|$
+where $\tilde{Y_{i.}}$ is the median of the i-th subgroup.
+
+3. $Z_{ij} = |Y_{ij} − \tilde{Y_i.}'|$
+where $\tilde{Y_{i.}'}$ is the trimmed mean of the i-th subgroup.
+
+
+$\bar{Z_{i.}}$ are the group means of the $Z_{ij}$ and $\bar{Z}..$ is the overall mean of the $Z_{ij}$.
+
+and, $Y_{ij}$ denote the value of jth case and ith group.
+
+Test is to reject null hypothesis for larger values of W.
+
+```{r, echo=FALSE,warning =FALSE, message=FALSE}
+library(car)
+
+#Test for Variability
+leveneTest(cases~as.factor(year), data[-1])
+
+```
+
+Since p-value > 0.05 , for Levene's test hence the test is not significant i.e. we failed to reject null hypothesis. Therefore there is no significant variability in the data through 2016-21.
+
+
+### Kruskal Wallis Test
+
+Now testing for equality in location using Kruskal Wallis Test:
+
+Let $\theta_{i}$ denote the location of the ith population, i = 1,2,3, ... , k.
+
+$H_0$: $\theta_{1} = \theta_{2} = \ ... \  =  \theta_{k}$          
+$H_1$: Atleast one pair of $\theta$' s differ.       
+
+Test Statistic
+
+$$H = \frac{12}{N(N+1)} \sum_{i = 1}^{k} \frac{R_i^2}{n_i} - 3(N+1) $$
+
+
+where $R_i$ = Sum of Ranks of the ith sample.       
+$n_i$ = size of the ith sample. 
+
+$N = \sum_{i = 1}^{k} n_i$             
+
+Test is to reject $H_0$ for large values of H.
+
+```{r, echo=FALSE,warning =FALSE, message=FALSE}
+kruskal.test(cases~as.factor(year), data[-1])
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant i.e. we failed to reject null hypothesis. Therefore there is no significant change in the locations throughout the years 2016-21.
+
+Hence, from both the tests, since there is no significant difference in location and variability in different years, we conclude that Computer Related Offenses (Sec 66 & Sec 66 B to E) are statistically same in terms of location and variability for different states.
+
+
+## State-wise comparison for Cases of Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+### Count of cases in each state
+
+
+
+![counts state-wise yearly CRO cases]("photos/counts_state_cro.png")
+
+
+
+The figure 3.3 shows the highest number of cases being registered in Karnataka, followed by Uttar Pradesh and Assam. But one must note that the population in these states may vary. So to get a better
+comparison, rates can be calculated, which gives the cyber-crime cases registered in the state per 1 lakh population. Mid-year projected population for each state for the year 2016 - 2021 is available. Hence the Crime Rate can be calculated.
+
+
+### Crime rate in each state
+
+
+
+![rates state-wise yearly CRO cases]("photos/rates_state_cro.png")
+
+ 
+
+The figure 3.4 shows the highest rate of cases being registered in Karnataka wrt 1 Lakh population in respective year, followed by Assam and Uttar Pradesh. But one must note that the Uttrakhand had observed a peak in year 2021
+
+The crime rate as well as counts of cyber crimes in Karnataka is surprisingly high.
+The pattern of crime rate wrt 1 Lakh population in respective year in Karnataka can be seen in figure 3.5.
+
+
+![karnataka]("photos/karnataka.png")
+
+
+
+### Year wise increment of Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+
+```{r, echo=FALSE, warning =FALSE, message=FALSE}
+
+pinc = function(x){
+per_inc = c()
+for (i in 2:length(x)) {
+per_inc[i] = x[i]/x[i-1] - 1
+}
+return(100*per_inc)
+}
+cbind(year=yr, CRO=cro, per_inc = round(pinc(cro),4))
+```
+
+The above data table shows the Computer Related Offenses got a peak in year 2019 when they increased by **65 %** as compared to previous year 2018. However a slight % decrease can be seen after that .
+
+
+
+# Police Disposal of Cyber Crimes in India
+
+
+## Introduction
+
+The core duty of the police service is to protect the public by detecting and preventing crime.       
+Police powers can be grouped into three categories:           
+
+- **Powers to investigate crime:** This includes a range of powers to collect evidence needed to identify suspects and support their fair and effective trial.       
+- **Powers to prevent crime:** This includes a range of powers to maintain public 
+order, prevent anti-social behavior and manage known offenders/ suspects.        
+
+- **Powers to ‘dispose’ off criminal cases:** These powers allow police officers to
+dispose off criminal cases outside of court or charge suspects so they can be prosecuted.       
+
+Various crimes that are being registered and investigated by different law enforcement agencies are broadly grouped under the following categories for statistical information system. 
+
+**Broad classification of crimes Crimes under I.T. Act:** 
+
+1. Tampering computer source documents       
+2. Computer Related Offenses       
+3. Cyber Terrorism       
+4. Publication/transmission of obscene / sexually explicit act in electronic form        
+5. Decryption of Information       
+6. Un-authorized access/attempt to  access to protected computer system        
+7. Abetment to Commit Offenses       
+8. Attempt to Commit Offenses        
+9. Other Sections of IT Act        
+
+**Crimes under the Indian Penal Code(IPC)**       
+
+1. Abetment of Suicide (Online)                       
+2. Cyber Stalking/Bullying of Women/Children       
+3. Data theft        
+4. Fraud       
+5. Credit Card/Debit Card        
+6. ATM s        
+7. Online Banking Fraud        
+8. OTP Frauds            
+9. Others            
+10. Cheating           
+11. Forgery            
+12. Defamation/Morphing        
+13. Fake Profile       
+14. Counterfeiting       
+15. Currency       
+16. Stamps       
+17. Cyber Blackmailing/Threatening       
+18. Fake News on Social Media        
+19. Other Offenses       
+
+**Crimes under the Special and Local Laws (SLL)**  
+
+1. Gambling Act (Online Gambling)            
+2. Lotteries Act (Online Lotteries)        
+3. Copy Right Act        
+4. Trade Marks Act       
+5. Other SLL Crimes        
+
+
+
+## Statistics and Data Visualization 
+
+**Police Disposal of Cases: Crime Head-Wise**
+
+```{r , echo=FALSE, warning = FALSE, message=FALSE}
+#2021
+rm(list = ls())
+library(ggplot2)
+df21 = read.csv("year2021.csv")
+df20 = read.csv("year2020.csv")
+attach(df20)
+```
+
+```{r , echo = FALSE, warning = FALSE ,message=FALSE}
+#2021 
+df21 = cbind(df21 , cases_invest_per = c(round(df21$Cases_Invest[1:9]/df21$Cases_Invest[10],5)*100,100 
+                                         ,round(df21$Cases_Invest[11:29]/df21$Cases_Invest[30],5)*100 ,100
+                                         ,round(df21$Cases_Invest[31:35]/df21$Cases_Invest[36],5)*100,100 ))
+
+#2020
+df20 = cbind(df20 , cases_invest_per = c(round(df20$Cases_Invest[1:9]/df20$Cases_Invest[10],5)*100,100 
+                                         ,round(df20$Cases_Invest[11:29]/df20$Cases_Invest[30],5)*100 ,100
+                                         ,round(df20$Cases_Invest[31:35]/df20$Cases_Invest[36],5)*100,100 ))
+```
+
+```{r , echo = FALSE, warning = FALSE,message=FALSE}
+#2021
+df21 = cbind(df21 , cases_true_per = c(round(df21$True_cases.but.insufficient.evidence_21[1:9]/df21$True_cases.but.insufficient.evidence_21[10],5)*100,100 
+                                         ,round(df21$True_cases.but.insufficient.evidence_21[11:29]/df21$True_cases.but.insufficient.evidence_21[30],5)*100 ,100
+                                         ,round(df21$True_cases.but.insufficient.evidence_21[31:35]/df21$True_cases.but.insufficient.evidence_21[36],5)*100,100 ))
+
+#2020
+df20 = cbind(df20 , cases_True_per = c(round(df20$`True_cases but insufficient evidence`[1:9]/df21$True_cases.but.insufficient.evidence_21[10],5)*100,100 
+                                         ,round(df20$`True_cases but insufficient evidence`[11:29]/df21$True_cases.but.insufficient.evidence_21[30],5)*100 ,100
+                                         ,round(df20$`True_cases but insufficient evidence`[31:35]/df21$True_cases.but.insufficient.evidence_21[36],5)*100,100 ))
+
+```
+
+```{r , echo = FALSE, warning = FALSE,message=FALSE}
+#2021 
+df21 = cbind(df21 , cases_disposed_per = c(round(df21$Cases_Disposed_21[1:9]/df21$Cases_Disposed_21[10],5)*100,100 
+                                         ,round(df21$Cases_Disposed_21[11:29]/df21$Cases_Disposed_21[30],5)*100 ,100
+                                         ,round(df21$Cases_Disposed_21[31:35]/df21$Cases_Disposed_21[36],5)*100,100 ))
+
+#2020
+df20 = cbind(df20 , cases_disposed_per = c(round(df20$Cases_Disposed_20[1:9]/df21$Cases_Disposed_20[10],5)*100,100 
+                                         ,round(df20$Cases_Disposed_20[11:29]/df21$Cases_Disposed_20[30],5)*100 ,100
+                                         ,round(df20$Cases_Disposed_20[31:35]/df21$Cases_Disposed_20[36],5)*100,100 ))
+
+```
+
+```{r , echo = FALSE, warning = FALSE,message=FALSE}
+#2021
+df21 = cbind(df21 , cases_pending_per = c(round(df21$Cases_Pending_21[1:9]/df21$Cases_Pending_21[10],5)*100,100 
+                                         ,round(df21$Cases_Pending_21[11:29]/df21$Cases_Pending_21[30],5)*100 ,100
+                                         ,round(df21$Cases_Pending_21[31:35]/df21$Cases_Pending_21[36],5)*100,100 ))
+#2020
+df20 = cbind(df20 , cases_pending_per = c(round(df20$Cases_Pending_20[1:9]/df20$Cases_Pending_20[10],5)*100,100 
+                                         ,round(df20$Cases_Pending_20[11:29]/df20$Cases_Pending_20[30],5)*100 ,100
+                                         ,round(df20$Cases_Pending_20[31:35]/df20$Cases_Pending_20[36],5)*100,100 ))
+```
+
+
+## Total Cases Investigated
+
+### Year 2021
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+library(ggplot2)
+bardiag = function(df, ax, ay, cl, tit, val_lab, x_lab, y_lab ){
+  bard = ggplot(data=df, aes(x = ax, y = ay ) ) +
+    geom_bar(stat="identity", fill = cl,width =0.4)+geom_text(aes(label= val_lab ), vjust= -0.3, size=2.5)+ theme_minimal()+
+    theme(axis.text.x = element_text(angle = 90, size = 7), axis.title = element_text(size = 10))+ ggtitle(tit) +
+    xlab(x_lab) + ylab(y_lab)
+  return(bard)
+}
+```
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_case_investigated_IT_21 = bardiag(df21[1:9,], ax = df21$Crime_Head[1:9], ay
+                                       = df21$Cases_Invest[1:9], "blue4", 
+                   "Police cases investigated - 2021", df21$cases_invest_per[1:9], 
+                   "crime head", "Cases investigated Percentage under IT Act" )
+Plot_case_investigated_IT_21
+```
+
+The above figure shows that under IT Act of computer related offences are highest with **78.457 %**.
+
+```{r , echo = FALSE,warning =FALSE , message=FALSE}
+Plot_case_investigated_IPC_21= bardiag(df21[11:29,], ax = df21$Crime_Head[11:29], ay = df21$Cases_Invest[11:29], "blue4", 
+                   "Police cases investigated - 2021", df21$cases_invest_per[11:29], 
+                   "crime head", " Cases investigated Percentage under IPC Act" )
+Plot_case_investigated_IPC_21
+```
+
+The above figure shows that cases investigated by Police "Under IPC Act" of Fraud are highest with **51.587 %**.
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_cases_investigated_SLL_21 = bardiag(df21[31:35,], ax = df21$Crime_Head[31:35], ay = df21$Cases_Invest[31:35], "blue4", 
+                   "Police cases investigated - 2021", df21$cases_invest_per[31:35], 
+                   "crime head", " Cases investigated Percentage Under SLL Act" )
+
+Plot_cases_investigated_SLL_21
+```
+
+The above figure shows that cases investigated by Police "Under SLL Act" of Copy Right Act are highest with **36.907 %**.
+
+**Year 2021**
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_case_disposed_IT_21 = bardiag(df21[1:9,], ax = df21$Crime_Head[1:9], ay = df21$Cases_Disposed_21[1:9], "blue4", 
+                                       "Police cases Disposed  - 2021", df21$cases_disposed_per[1:9], 
+                           "crime head", "Disposed Percentage under I.T Act" )
+Plot_case_disposed_IT_21
+```
+
+The above figure shows that cases Disposed under IT Act of computer related offenses are highest with **81.767 %**.            
+
+
+```{r , echo = FALSE ,warning =FALSE}
+Plot_case_disposed_IPC_21= bardiag(df21[11:29,], ax = df21$Crime_Head[11:29], 
+                                   ay = df21$Cases_Disposed_21[11:29], "blue4", 
+                                       "Police cases Disposed  - 2021", df21$cases_disposed_per[11:29], 
+                         "crime head", "Disposed Percentage under IPC Act" )
+
+Plot_case_disposed_IPC_21
+```
+
+The above figure shows that cases Disposed by Police "Under IPC Act" of Fraud
+are highest with **51.127 %**.
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_cases_disposed_SLL_21 = bardiag(df21[31:35,], ax = df21$Crime_Head[31:35],
+                                    ay = df21$Cases_Disposed_21[31:35], "blue4", 
+                                         "Police cases Disposed - 2021", df21$cases_disposed_per[31:35], 
+                            "crime head", "Disposed Percentage Under SLL Act" )
+Plot_cases_disposed_SLL_21
+```
+
+The above figure shows that cases Disposed by Police "Under SLL Act" of Copy Right Act and Other SLL Crimes are highest with **36.306 %**.
+
+
+**Total Cases Pending**
+
+**Year 2021**
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+Plot_case_pending_IT_21 = bardiag(df21[1:9,], ax = df21$Crime_Head[1:9],
+                        ay = df21$Cases_Pending_21[1:9], "blue4", 
+                                       "Police cases Pending- 2021", df21$cases_pending_per[1:9], 
+              "crime head", "Pending Cases Percentage under I.T. Act " )
+Plot_case_pending_IT_21
+```
+
+The above figure shows that Cases pending under IT Act of computer related offenses are highest with **75.194 %**.
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_case_pending_IPC_21= bardiag(df21[11:29,], ax = df21$Crime_Head[11:29], ay = df21$Cases_Pending_21[11:29], "blue4", 
+                                       "Police cases Pending - 2021", df21$cases_pending_per[11:29], 
+                                       "crime head", "Pending Cases Percentage under IPC Act" )
+Plot_case_pending_IPC_21
+```           
+
+The above figure shows that cases pending by Police "Under IPC Act" of Fraud are highest with **51.853 %**.
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+Plot_cases_pending_SLL_21 = bardiag(df21[31:35,], ax = df21$Crime_Head[31:35],
+                                    ay = df21$Cases_Pending_21[31:35],     "blue4","Police cases Pending - 2021", df21$cases_pending_per[31:35], 
+                                    "crime head", 
+                                    " Pending Cases Percentage Under SLL Act" )
+Plot_cases_pending_SLL_21
+```   
+
+The above figure shows that cases pending by Police "Under SLL Act" of Copy Right Act are highest with **37.195 %**.
+
+### Year2020
+
+```{r,echo=FALSE , warning=FALSE , message=FALSE}
+Plot_case_pending_IT_21 = bardiag(df20[1:9,], ax = df20$Crime_Head[1:9], ay = df20$Cases_Pending_20[1:9], "blue4", 
+                                   "Police cases Pending  - 2020", df20$cases_pending_per[1:9], 
+                             "crime head", " Pending Percentage under I.T Act" )
+Plot_case_pending_IT_21
+```    
+
+The above figure shows that Cases pending under IT Act of computer related offenses are highest with **81.926%**.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+Plot_case_pending_IPC_20= bardiag(df20[11:29,], ax = df20$Crime_Head[11:29],
+ay = df20$Cases_Pending_20[11:29], "blue4", 
+                                 "Police cases Pending - 2020", df20$cases_pending_per[11:29], 
+                                 "crime head", "Pending Cases Percentage under 
+                                 IPC Act" )
+Plot_case_pending_IPC_20
+```
+
+The above figure shows that Cases pending under I.P.C of computer related offenses are highest with **48.259 %**.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+Plot_cases_pending_SLL_20 = bardiag(df20[31:35,], ax = df20$Crime_Head[31:35],
+                                    ay = df20$Cases_Pending_20[31:35],     "blue4","Police cases Pending - 2020", df20$cases_pending_per[31:35], 
+                                    "crime head", 
+                                    " Pending Cases Percentage Under SLL Act" )
+Plot_cases_pending_SLL_20
+```
+
+The above figure shows that cases pending by Police "Under SLL Act" of Copy Right Act are highest with **45.652 %**.
+
+## Police Disposal Rate of Cyber Crime Cases (State-wise)
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+rm(list = ls())
+library(readxl)
+dfU21 = read.csv("st2021.csv")
+dfU21 = cbind(dfU21, Rates_States=(dfU21$Cases_Disposed[1:28])/(dfU21$Mid_Year_Projected_Population[1:28]))
+statewise = ggplot(data = dfU21, aes(x = States , y = Rates_States))+geom_bar(stat = "identity", fill = "blue4")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 7))+geom_text(aes(label= round(dfU21$Rates_States,2) ), vjust= -0.3, size=2.5)
+statewise
+```           
+
+## Total Cyber Crimes for Investigation and their Disposal by Police           
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+df = read.csv("trend.csv")
+attach(df)
+plot = ggplot(data = df , aes(x =  year)) + 
+  geom_line(aes(y = Cases_Invest_21),color = "darkred")+
+  geom_point(aes(y = Cases_Invest_21),color = "black")+
+  geom_line(aes(y = Cases_Disposed_21),color = "steelblue")+
+  geom_point(aes(y = Cases_Disposed_21),color = "black")
+plot+theme_minimal()
+```        
+Upper line shows Total Cyber Crimes for Investigation and lower line shows their disposal. This graph shows Total Cyber Crimes for Investigation and their Disposal by Police.         
+
+### Testing location (crimehead-wise)         
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+rm(list = ls())
+data = read.csv("yearwise.csv")[-c(10,30,36,37),]
+data = data[,-c(1,2)]
+for (i in 1:20) {
+  data[[i]] = data[[i]]/sd(data[[i]])
+}
+
+kruskal.test( data[,seq(1,17,4)] ) 
+```
+
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e 
+we fail to reject null hypothesis. Therefore there is no significant change in 
+the location throughout the years 2017-2021. Hence we conclude that cases 
+investigated crime head wise are statistically same for different years.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test( data[,seq(2,18,4)] )
+```
+
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e we fail to reject null hypothesis. Therefore there is no significant change in the location throughout the years 2017-2021. We conclude that cases true but insufficient evidence crime head wise are statistically same for different years.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test( data[,seq(3,19,4)] ) 
+```
+       
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e we fail to reject null hypothesis. Therefore there is no significant change in the location throughout the years 2017-2021. Hence we conclude that cases disposed crime head wise are statistically same for different years.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test( data[,seq(4,20,4)] ) 
+```
+
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e we fail to reject null hypothesis. Therefore there is no significant change in the location throughout the years 2017-2021. Hence we conclude that cases pending crime head wise are statistically same  for different years.                 
+
+### Testing variability and location (state-wise)             
+
+```{r , echo = TRUE ,warning =FALSE, echo=FALSE}             
+rm(list = ls())            
+stdata = read.csv("statewise.csv")
+library(car)
+rownames(stdata) = stdata$States
+stdata = stdata[-1]
+stcasesinvest = stdata[seq(1,17,4)]
+stinvest = unlist(stcasesinvest)
+year = rep( c("y21","y20", "y19", "y18", "y17" ),each = 28 )
+st_casesinvest = data.frame(stinvest, year)
+leveneTest(stinvest~as.factor(year), st_casesinvest )
+```
+
+Since p-value > 0.05 , for Levene’s test hence the test is not significant i.e. we failed to reject null hypothesis.            
+Therefore there is no significant variability in the data through 2017-21         
+Now testing for equality in location using Kruskal Wallis Test.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(stinvest~as.factor(year), st_casesinvest )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant i.e. we failed to reject null hypothesis.            
+Therefore there is no significant change in the locations      throughout the years 2017-21 Hence, from both the tests,Since   there is no significant difference in location and variability in different years. Hence we conclude that cases investigated   are statistically same in terms of location and variability for different crimes.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+stcasestrue = stdata[seq(2,18,4)]
+sttrue = unlist(stcasestrue)
+st_casestrue = data.frame(sttrue, year)
+leveneTest(sttrue~as.factor(year), st_casestrue )
+```
+
+Since p-value > 0.05 , for levene’s test hence the test is not significant i.e.
+we failed to reject null hypothesis.
+Therefore there is no significant variability in the data through 2017-21
+Now testing for equality in location using Kruskal Wallis Test
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(sttrue~as.factor(year), st_casestrue )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant
+i.e. we failed to reject null hypothesis. Therefore there is no significant 
+change in the locations throughout the years 2017-21. From both the tests, Since there is no significant difference in location and variability in different years. Hence we conclude that cases true but insufficient evidence are statistically same in terms of location and variability for different crimes.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+stcasesdisposed = stdata[seq(2,18,4)]
+stdisposed = unlist(stcasesdisposed)
+st_casesdisposed = data.frame(stdisposed, year)
+leveneTest(stdisposed~as.factor(year), st_casesdisposed )
+```
+
+Since p-value > 0.05 , for levene’s test hence the test is not significant i.e. 
+we failed to reject null hypothesis.
+Therefore there is no significant variability in the data through 2017-21
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(stdisposed~as.factor(year), st_casesdisposed )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant
+i.e. we failed to reject null hypothesis. Therefore there is no significant 
+change in the locations throughout the years 2017-21 Hence, from both the tests,Since there is no significant difference in location and variability in different years. Hence we conclude that cases Disposed are statistically same in terms of location and variability for different crimes.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+stcasespending = stdata[seq(2,18,4)]
+stpending = unlist(stcasespending)
+st_casespending = data.frame(stpending, year)
+leveneTest(stpending~as.factor(year), st_casespending )
+```
+
+Since p-value > 0.05 , for Levene’s test hence the test is not significant  
+i.e. we failed to reject null hypothesis.
+Therefore there is no significant difference in variability in the data through 2017-21      
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(stpending~as.factor(year), st_casespending )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant i.e. we failed to reject null hypothesis. Therefore there is no significant change in the locations throughout the years 2017-21 Hence, from both the tests, Since there is no significant difference in location and variability in different years, we conclude that cases pending are statistically same in terms of location and variability for different crimes.       
+
+### Paired Wilcoxon Signed-Rank test
+
+The Paired Wilcoxon Signed-Rank test is a non parametric alternative to the paired t-test for comparing the mean difference means in case of dependent samples.       
+The goal of the test is to determine if two or more sets of pairs are different from one another in a statistically significant manner.                          
+Test assume that the pairs in the data come from dependent populations               
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+wilcox.test( stdata$Cases_Invest_17, stdata$Cases_Invest_21, paired = TRUE )
+```
+
+The p-value < 0.05. We conclude that the cases investigated in year 2017 are significantly different from cases investigated in year 2021.
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+wilcox.test( stdata$Cases_Disposed_17, stdata$Cases_Disposed_21, paired = TRUE )
+```
+
+The p-value < 0.05. We conclude that the cases Disposed in year 2017 are significantly different from cases Disposed in year 2021.           
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+wilcox.test( stdata$Cases_Pending_17, stdata$Cases_Pending_21, paired = TRUE )
+```
+The p-value < 0.05. We conclude that the cases pending in year 2017 are significantly different from cases pending in year 2021.           
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+wilcox.test( stdata$True_cases.but.insufficient.evidence_17, stdata$True_cases.but.insufficient.evidence_21, paired = TRUE )
+```
+
+The p-value < 0.05. We conclude that the cases true but insufficient evidence in year 2017 are significantly different  from cases true but insufficient evidence in year 2021.   
+
+## Hierarchical Cluster Analysis
+          
+In Hierarchical Cluster Analysis,the observations are grouped together on the basis of their mutual distances. It is visualized through a hierarchical tree, called dendrogram  tree.
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+rm(list = ls())
+library(factoextra)
+library(cluster)
+data = read.csv("yearwisecluster.csv")
+rownames(data) = data$Crime_Head
+data = data[-1]
+data.scaled = scale(data)
+```
+
+### Agglomerative HCA:
+
+**Algorithm:**    
+
+Operates by successive merger of cases.
+
+1. Begin with N clusters each containing single cases.           
+2. At each stage, we merge the two most similar groups to form a new cluster.Thus reducing the no. of clusters to (N-1)           
+3. Continue till all subgroups are fuse to form a single cluster.            
+
+```{r , echo = FALSE , warning = FALSE, message = FALSE}
+res.agnes <- agnes(x = data, # data matrix
+stand = TRUE, # Standardize the data
+metric = "euclidean", # metric for distance matrix
+method = "ward" # Linkage method
+)
+fviz_dend(res.agnes,k = 4,color_labels_by_k = TRUE, cex = 0.5,rect = TRUE)
+```
+
+At a particular Distance level of 20 units, we can observe that electronic form, Cheating ,fraud,computer related offence form one cluster, however the crimes with lesser number are in one cluster.
+
+### Divisive HCA            
+
+1. Divisive method operates by successive splitting of group.                
+2. Initially starts with a single group(i.e.one single cluster)                
+3. Group is divided into two groups                
+4. Continue till there are n groups each with a single object.                   
+
+On the other hand if Divisive HCA is applied at a particular distance 10 there will be two clusters.     
+The major four crimes in one cluster and other in second cluster.   
+
+```{r , echo = TRUE ,warning =FALSE,message=FALSE, echo=FALSE}
+res.diana <- diana(x = data, # data matrix
+stand = TRUE, # standardize the data
+metric = "euclidean")
+fviz_dend(res.diana,k = 4,color_labels_by_k = TRUE,cex = 0.5,rect = TRUE)
+```
+
+
+
+
+# Cyber Crimes against Women and Children
+
+
+## Introduction
+
+In this section, the main interest is to carry out statistical analysis of the Cyber Crimes happening particularly against women and children.        
+The major cyber crimes against women for which the data is collected by NCRB include: Cyber Blackmailing/Threatening, Cyber Bullying/Stalking, Cyber Pornography, Fake Profiles, Defamation/Morphing etc.        
+
+## Cyber Crimes against Children
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+library(readxl)
+child21 = read_excel("2021 children.xlsx")
+child20 = read_excel("2020 children.xlsx")
+child19 = read_excel("2019 children.xlsx")
+child18 = read_excel("2018 children.xlsx")
+child17 = read_excel("2017 children.xlsx")
+```
+
+### Year 2020
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(ggplot2)
+ggplot(data = child20[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Children")
+```
+
+The states of Maharashtra, Uttar Pradesh, Karnataka, Kerala registered higher cyber-crimes against children in the year 2020.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child20[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh children population")
+```
+However, in terms of rates, Kerala has the maximum cyber crime rate against children in the year 2020
+
+#### Runs Test for randomness
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(randtests)
+runs.test(child20$rate[1:28] )
+```
+
+Since, p-value > 0.05, the results are coming out be non-significant. Thus, we conclude that the cyber-crime rates against children throughout the states is random.
+
+
+#### Komlogorov-Smirnov Test
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
+ks.test(child20$rate[1:28], child21$rate[1:28])
+ks.test(child17$rate[-c(10, 30:39)], child21$rate[1:28])
+ks.test(child18$rate[-c(10, 30:39)], child21$rate[1:28])
+ks.test(child19$rate[-c(10, 30:39)], child21$rate[1:28])
+ks.test(child19$rate[-c(10, 30:39)], child20$rate[1:28])
+```
+The distribution of cyber-crime rates against children is same for the years 2020 and 2021 throughout the states, however it differs significantly between the years 2021 amd 2017, 2018, 2019.
+
+The distrubution of cases also differs significantly for the consecutive years 2019 and 2020 at 5% level of significance.
+
+**U.T. Wise**
+
+Data Visualization can be done for the Union Territories as follows: 
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child20[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Children")
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child20[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes per 1 lakh children population")
+```
+
+
+
+### Year 2021
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Children")
+
+```
+
+Maharashtra, Karnataka, Kerala, Assam and Uttar Pradesh have comparatively higher cyber crimes against children in 2021.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh children population")
+```
+
+However, in terms of rates, the state of Kerala again has the  maximum cyber crime rate against children.
+
+**U.T. Wise**
+
+Data for the Union Territories can also be viewed as folows:
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Children")
+
+```
+A huge increase in the cyber crimes against children can be noticed in Delhi as compared to previous year.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes Rates children")
+```
+
+
+
+## Cyber Crimes against Women
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+library(readxl)
+women21 = read_excel("2021 women.xlsx")
+women20 = read_excel("2020 women.xlsx")
+women19 = read_excel("2019 women.xlsx")
+women18 = read_excel("2018 women.xlsx")
+women17 = read_excel("2017 women.xlsx")
+```
+
+
+#### Komlogorov-Smirnov Test
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
+ks.test(women20$rate[1:28], women21$rate[1:28])
+ks.test(women17$rate[-c(10, 30:39)], women21$rate[1:28])
+ks.test(women18$rate[-c(10, 30:39)], women21$rate[1:28])
+ks.test(women19$rate[-c(10, 30:39)], women21$rate[1:28])
+ks.test(women19$rate[-c(10, 30:39)], women20$rate[1:28])
+```
+
+The distribution of cyber crime rates against women throughout the states is same for the years 2020 and 2021. However, the distribution differs significantly for the years 2017 and 2021.
+
+### Year 2020
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(ggplot2)
+ggplot(data = women20[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Women")
+```
+
+The states of Karnataka, Maharashtra, Assam have comparatively higher cyber crimes against women.
+
+
+#### Runs Test for randomness
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(randtests)
+runs.test(women20$rate[1:28] )
+```
+
+
+Since, p-value > 0.05, the results are coming out be non-significant. Thus, we conclude that the cyber-crime rates against women throughout the states is random.
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women20[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh Women population")
+```
+
+In terms of rates, Karnataka has the maximum 8.73 cyber crimes against women followed by Assam and Telangana. 
+
+**U.T. Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women20[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Women")
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women20[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crime Rates Women")
+```
+
+
+
+### Year 2021
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Women")
+```
+Karnataka, Maharashtra and Assam are again the states with higher cyber crimes against women.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh Women population")
+```
+Again, the state of Karnataka has the maximum cyber crime rate against women followed by Assam, Telangana and Uttar Pradesh.
+
+**U.T. Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Women")
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "black")+theme_minimal()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crime Rates Women")
+```
+
+
+
+\chapter*{Conclusion}
+
+
+**References:**
+
+- IAMAI and Kantar Joint Report (2023): 759 Million Indians Active Internet Users, to Reach 900 Million by 2025.       
+- Crime in India Statistics (2021): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Volume II, Chapter 9, Table 9.A.1.        
+- Crime in India Statistics (2016 - 2021): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Volume II, Chapter 9.                   
+- Crime in India Statistics (2012 - 2015): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Chapter 18.                   
+- Crime in India (2002 - 2011): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Chapter 18.       
+- Individuals using the Internet (% of population) – India (2021): International
+Telecommunication Union (ITU) World Telecommunication/ICT Indicators Database. M. Dasgupta (2009): Cyber Crime in India: A Comparative Study, Eastern Law House
+Private Ltd., 54, Ganesh Chunder Avenue, Kolkata – 700013.        
+- A. Bhangla and J. Tuli (2021): A Study of Cyber Crime and its Legal Framework in
+India, International Journal of Law Management and Humanities, Volume 4, Issue 2,
+493-504.
+
+
+

@@ -1,0 +1,234 @@
+---
+title: '**Cyber Crimes in India**'
+documentclass: report
+date: "June 30, 2023."
+output:
+  word_document: default
+  pdf_document:
+    latex_engine: xelatex
+    number_sections: yes
+papersize: a4
+fontsize: 11
+geometry: margin=1in
+mainfont: Times New Roman
+---
+
+# Cyber Crimes against Women and Children
+
+
+## Introduction
+
+In this section, the main interest is to carry out statistical analysis of the Cyber Crimes happening particularly against women and children.        
+The major cyber crimes against women for which the data is collected by NCRB include: Cyber Blackmailing/Threatening, Cyber Bullying/Stalking, Cyber Pornography, Fake Profiles, Defamation/Morphing etc.        
+
+## Cyber Crimes against Children
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+library(readxl)
+child21 = read_excel("2021 children.xlsx")
+child20 = read_excel("2020 children.xlsx")
+child19 = read_excel("2019 children.xlsx")
+child18 = read_excel("2018 children.xlsx")
+child17 = read_excel("2017 children.xlsx")
+```
+
+**Year 2020**
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(ggthemes)
+ggplot(data = child20[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#00c698")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Children")
+ggplot(data = child20[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#0069c0")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Children")
+```
+
+The states of Maharashtra, Uttar Pradesh, Karnataka, Kerala registered higher cyber-crimes against children in the year 2020.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child20[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#0b1d78")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh children population")
+```
+However, in terms of rates, Kerala has the maximum cyber crime rate against children in the year 2020
+
+#### Runs Test for randomness
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(randtests)
+runs.test(child20$rate[1:28] )
+```
+
+Since, p-value > 0.05, the results are coming out be non-significant. Thus, we conclude that the cyber-crime rates against children throughout the states is random.
+
+
+#### Komlogorov-Smirnov Test
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
+ks.test(child20$rate[1:28], child21$rate[1:28])
+ks.test(child17$rate[-c(10, 30:39)], child21$rate[1:28])
+ks.test(child18$rate[-c(10, 30:39)], child21$rate[1:28])
+ks.test(child19$rate[-c(10, 30:39)], child21$rate[1:28])
+ks.test(child19$rate[-c(10, 30:39)], child20$rate[1:28])
+```
+The distribution of cyber-crime rates against children is same for the years 2020 and 2021 throughout the states, however it differs significantly between the years 2021 amd 2017, 2018, 2019.
+
+The distrubution of cases also differs significantly for the consecutive years 2019 and 2020 at 5% level of significance.
+
+**U.T. Wise**
+
+Data Visualization can be done for the Union Territories as follows: 
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child20[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#00a9b5", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Children")
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child20[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#00c698", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes per 1 lakh children population")
+```
+
+
+
+**Year 2021**
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#0069c0")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Children")
+
+```
+
+Maharashtra, Karnataka, Kerala, Assam and Uttar Pradesh have comparatively higher cyber crimes against children in 2021.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#0b1d78")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh children population")
+```
+
+However, in terms of rates, the state of Kerala again has the  maximum cyber crime rate against children.
+
+**U.T. Wise**
+
+Data for the Union Territories can also be viewed as folows:
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#00c698", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Children 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Children")
+
+```
+A huge increase in the cyber crimes against children can be noticed in Delhi as compared to previous year.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = child21[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#0069c0", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Children Rates 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes Rates children")
+```
+
+
+
+## Cyber Crimes against Women
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+library(readxl)
+women21 = read_excel("2021 women.xlsx")
+women20 = read_excel("2020 women.xlsx")
+women19 = read_excel("2019 women.xlsx")
+women18 = read_excel("2018 women.xlsx")
+women17 = read_excel("2017 women.xlsx")
+```
+
+
+#### Komlogorov-Smirnov Test
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE}
+ks.test(women20$rate[1:28], women21$rate[1:28])
+ks.test(women17$rate[-c(10, 30:39)], women21$rate[1:28])
+ks.test(women18$rate[-c(10, 30:39)], women21$rate[1:28])
+ks.test(women19$rate[-c(10, 30:39)], women21$rate[1:28])
+ks.test(women19$rate[-c(10, 30:39)], women20$rate[1:28])
+```
+
+The distribution of cyber crime rates against women throughout the states is same for the years 2020 and 2021. However, the distribution differs significantly for the years 2017 and 2021.
+
+**Year 2020**
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(ggplot2)
+ggplot(data = women20[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#0069c0")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Women")
+```
+
+The states of Karnataka, Maharashtra, Assam have comparatively higher cyber crimes against women.
+
+
+#### Runs Test for randomness
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+library(randtests)
+runs.test(women20$rate[1:28] )
+```
+
+
+Since, p-value > 0.05, the results are coming out be non-significant. Thus, we conclude that the cyber-crime rates against women throughout the states is random.
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women20[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#00c698")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2020: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh Women population")
+```
+
+In terms of rates, Karnataka has the maximum 8.73 cyber crimes against women followed by Assam and Telangana. 
+
+**U.T. Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women20[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#0b1d78", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Women")
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women20[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#00a9b5", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2020: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crime Rates Women")
+```
+
+
+
+**Year 2021**
+
+**State-Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[1:28,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#00c698")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes aginst Women")
+```
+Karnataka, Maharashtra and Assam are again the states with higher cyber crimes against women.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[1:28,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#0b1d78")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2021: State Wise")+xlab("States")+ylab("Total Cyber Crimes per 1 lakh Women population")
+```
+
+Again, the state of Karnataka has the maximum cyber crime rate against women followed by Assam, Telangana and Uttar Pradesh.
+
+**U.T. Wise**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[30:37,], aes(x = state_ut, y = totalcrimes))+geom_bar(stat = "identity", fill = "#00a9b5", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= totalcrimes ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crimes Against Women 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crimes aginst Women")
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+ggplot(data = women21[30:37,], aes(x = state_ut, y = rate))+geom_bar(stat = "identity", fill = "#00c698", width = 0.5)+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 8))+ geom_text(aes(label= rate ), vjust= -0.3, size=2.5)+ ggtitle("Cyber Crime Against Women Rates 2021: U.T. Wise")+xlab("U.T.")+ylab("Total Cyber Crime Rates Women")
+```
+
+
+
+\chapter*{Conclusion}
+
+
+**References:**
+
+* IAMAI and Kantar Joint Report (2023): 759 Million Indians Active Internet Users, to Reach 900 Million by 2025.       
+* Crime in India Statistics (2021): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Volume II, Chapter 9, Table 9.A.1.        
+* Crime in India Statistics (2016 - 2021): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Volume II, Chapter 9.                   
+* Crime in India Statistics (2012 - 2015): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Chapter 18.                   
+* Crime in India (2002 - 2011): National Crime Records Bureau (NCRB), Ministry of Home Affairs, Govt. of India, Chapter 18.       
+* Individuals using the Internet (% of population) – India (2021): International
+Telecommunication Union (ITU) World Telecommunication/ICT Indicators Database. M. Dasgupta (2009): Cyber Crime in India: A Comparative Study, Eastern Law House
+Private Ltd., 54, Ganesh Chunder Avenue, Kolkata – 700013.        
+* A. Bhangla and J. Tuli (2021): A Study of Cyber Crime and its Legal Framework in
+India, International Journal of Law Management and Humanities, Volume 4, Issue 2,
+493-504.
+
+

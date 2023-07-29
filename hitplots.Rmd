@@ -1,0 +1,107 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+papersize: a3
+---
+# Hitplots
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+library(readxl)
+data1 = read_excel("fig_data.xlsx")
+data1$Year = as.character(data1$Year)
+library(ggplot2)
+library(ggthemes)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig31 = ggplot(data1, aes(Year ,Rate,fill=Offense))+
+  geom_bar(stat="identity",position=  'dodge')+
+  labs(title= "Rates: Section-Wise yearly IT-Act Cases",
+       caption = "Figure: 3.1",
+       cex.labs = 0.5)+theme_clean()+theme(legend.position="bottom")
+fig31
+```
+
+
+*Abbreviations Used :*
+
+TCSD: Tampering Computer Source Documents (Section 65)               
+CRO: Computer Related Offenses (Sec 66 & Sec 66 B to E)(TOTAL)                    
+CTR: Cyber Terrorism (Section 66F)                
+PTE: Publication/ transmission of obscene / sexually explicit act in electronic form                       
+
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data2 = read_excel("fig_data.xlsx", sheet = "Sheet2")
+data2$Year = as.character(data2$Year)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig32 = ggplot(data2, aes(Year ,Rate,fill=Offense))+
+  geom_bar(stat="identity",position=  'dodge')+
+  labs(title= "Rates: Section-Wise Yearly IPC-Act Cases",
+       caption = "Figure: 3.2",
+       cex.labs = 0.5)+theme_clean()+theme(legend.position="bottom")+guides(col = guide_legend(nrow=4, byrow=TRUE))
+fig32
+```
+
+
+*Sections of these Offenses:*
+
+Data theft (Sec.379 to 381)       
+Fraud (Sec.420 r/w Sec.465,468-471 IPC)       
+Cheating (Sec.420)        
+Forgery (Sec.465, 468 & 471)        
+
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data3 = read_excel("fig_data.xlsx", sheet = "Sheet3")
+data3$Year = as.character(data3$Year)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig33 = ggplot(data3, aes(State ,Cyber.Crimes ,fill= Year))+
+  geom_bar(stat="identity",position=  'dodge')+theme_clean() +theme(axis.text.x = element_text(angle = 90, size = 8))+
+  labs(title= "Computer Related Offenses: State-Wise",
+       caption = "Figure: 3.3",
+       cex.labs = 0.5)+theme(legend.position="right")
+fig33
+```
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data4 = read_excel("fig_data.xlsx", sheet = "Sheet4")
+data4$Year = as.character(data4$Year)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig34 = ggplot(data4, aes(State ,Rates ,fill= Year))+
+  geom_bar(stat="identity",position=  'dodge')+theme_clean() +theme(axis.text.x = element_text(angle = 90, size = 8))+
+  labs(title= "Computer Related Offense Rates: State-Wise",
+       caption = "Figure: 3.4",
+       cex.labs = 0.5)+theme(legend.position="right")
+fig34
+```
+
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data5 = read_excel("fig_data.xlsx", sheet = "Sheet5")
+data5$Year = as.character(data5$Year)
+```
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig35 = ggplot(data5, aes(x=Year, y=Rate, group=1)) +
+  geom_line(color = "#0b1d78")+
+  geom_point()+theme_clean()+labs(title= "Cyber Crime Rates: Karnataka",
+       caption = "Figure: 3.5",
+       cex.labs = 0.5)
+
+fig35
+```
+
+
+

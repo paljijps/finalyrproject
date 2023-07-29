@@ -1,0 +1,625 @@
+---
+title: '**Cyber Crimes in India**'
+documentclass: report
+date: "June 30, 2023."
+output:
+  word_document: default
+  pdf_document:
+    latex_engine: xelatex
+    number_sections: yes
+papersize: a4
+fontsize: 12
+geometry: margin=1in
+header-includes:
+- \usepackage{setspace}
+- \singlespacing
+mainfont: Times New Roman
+---
+
+
+# Police Disposal of Cyber Crimes in India
+
+
+## Introduction
+
+The core duty of the police service is to protect the public by detecting and preventing crime.       
+Police powers can be grouped into three categories:           
+
+- **Powers to investigate crime:** This includes a range of powers to collect evidence needed to identify suspects and support their fair and effective trial.           
+- **Powers to prevent crime:** This includes a range of powers to maintain public 
+order, prevent anti-social behavior and manage known offenders/ suspects.        
+- **Powers to ‘dispose’ off criminal cases:** These powers allow police officers to
+dispose off criminal cases outside of court or charge suspects so they can be prosecuted.       
+
+Various crimes that are being registered and investigated by different law enforcement agencies are broadly grouped under the following categories for statistical information system. 
+
+**Broad classification of crimes Crimes under I.T. Act:** 
+
+1. Tampering computer source documents       
+2. Computer Related Offenses       
+3. Cyber Terrorism       
+4. Publication/transmission of obscene / sexually explicit act in electronic form        
+5. Decryption of Information       
+6. Un-authorized access/attempt to  access to protected computer system        
+7. Abetment to Commit Offenses       
+8. Attempt to Commit Offenses        
+9. Other Sections of IT Act        
+
+**Crimes under the Indian Penal Code(IPC)**       
+
+1. Abetment of Suicide (Online)                       
+2. Cyber Stalking/Bullying of Women/Children       
+3. Data theft        
+4. Fraud       
+5. Credit Card/Debit Card        
+6. ATM s        
+7. Online Banking Fraud        
+8. OTP Frauds            
+9. Others            
+10. Cheating           
+11. Forgery            
+12. Defamation/Morphing        
+13. Fake Profile       
+14. Counterfeiting       
+15. Currency       
+16. Stamps       
+17. Cyber Blackmailing/Threatening       
+18. Fake News on Social Media        
+19. Other Offenses       
+
+**Crimes under the Special and Local Laws (SLL)**  
+
+1. Gambling Act (Online Gambling)            
+2. Lotteries Act (Online Lotteries)        
+3. Copy Right Act        
+4. Trade Marks Act       
+5. Other SLL Crimes        
+
+
+
+## Statistics and Data Visualization 
+
+**Police Disposal of Cases: Crime Head-Wise**
+
+```{r , echo=FALSE, warning = FALSE, message=FALSE}
+#2021
+rm(list = ls())
+library(ggplot2)
+df21 = read.csv("year2021.csv")
+df20 = read.csv("year2020.csv")
+attach(df20)
+```
+
+```{r , echo = FALSE, warning = FALSE ,message=FALSE}
+#2021 
+df21 = cbind(df21 , cases_invest_per = c(round(df21$Cases_Invest[1:9]/df21$Cases_Invest[10],5)*100,100 
+                                         ,round(df21$Cases_Invest[11:29]/df21$Cases_Invest[30],5)*100 ,100
+                                         ,round(df21$Cases_Invest[31:35]/df21$Cases_Invest[36],5)*100,100 ))
+
+#2020
+df20 = cbind(df20 , cases_invest_per = c(round(df20$Cases_Invest[1:9]/df20$Cases_Invest[10],5)*100,100 
+                                         ,round(df20$Cases_Invest[11:29]/df20$Cases_Invest[30],5)*100 ,100
+                                         ,round(df20$Cases_Invest[31:35]/df20$Cases_Invest[36],5)*100,100 ))
+```
+
+```{r , echo = FALSE, warning = FALSE,message=FALSE}
+#2021
+df21 = cbind(df21 , cases_true_per = c(round(df21$True_cases.but.insufficient.evidence_21[1:9]/df21$True_cases.but.insufficient.evidence_21[10],5)*100,100 
+                                         ,round(df21$True_cases.but.insufficient.evidence_21[11:29]/df21$True_cases.but.insufficient.evidence_21[30],5)*100 ,100
+                                         ,round(df21$True_cases.but.insufficient.evidence_21[31:35]/df21$True_cases.but.insufficient.evidence_21[36],5)*100,100 ))
+
+#2020
+df20 = cbind(df20 , cases_True_per = c(round(df20$`True_cases but insufficient evidence`[1:9]/df21$True_cases.but.insufficient.evidence_21[10],5)*100,100 
+                                         ,round(df20$`True_cases but insufficient evidence`[11:29]/df21$True_cases.but.insufficient.evidence_21[30],5)*100 ,100
+                                         ,round(df20$`True_cases but insufficient evidence`[31:35]/df21$True_cases.but.insufficient.evidence_21[36],5)*100,100 ))
+
+```
+
+```{r , echo = FALSE, warning = FALSE,message=FALSE}
+#2021 
+df21 = cbind(df21 , cases_disposed_per = c(round(df21$Cases_Disposed_21[1:9]/df21$Cases_Disposed_21[10],5)*100,100 
+                                         ,round(df21$Cases_Disposed_21[11:29]/df21$Cases_Disposed_21[30],5)*100 ,100
+                                         ,round(df21$Cases_Disposed_21[31:35]/df21$Cases_Disposed_21[36],5)*100,100 ))
+
+#2020
+df20 = cbind(df20 , cases_disposed_per = c(round(df20$Cases_Disposed_20[1:9]/df21$Cases_Disposed_20[10],5)*100,100 
+                                         ,round(df20$Cases_Disposed_20[11:29]/df21$Cases_Disposed_20[30],5)*100 ,100
+                                         ,round(df20$Cases_Disposed_20[31:35]/df21$Cases_Disposed_20[36],5)*100,100 ))
+
+```
+
+```{r , echo = FALSE, warning = FALSE,message=FALSE}
+#2021
+df21 = cbind(df21 , cases_pending_per = c(round(df21$Cases_Pending_21[1:9]/df21$Cases_Pending_21[10],5)*100,100 
+                                         ,round(df21$Cases_Pending_21[11:29]/df21$Cases_Pending_21[30],5)*100 ,100
+                                         ,round(df21$Cases_Pending_21[31:35]/df21$Cases_Pending_21[36],5)*100,100 ))
+#2020
+df20 = cbind(df20 , cases_pending_per = c(round(df20$Cases_Pending_20[1:9]/df20$Cases_Pending_20[10],5)*100,100 
+                                         ,round(df20$Cases_Pending_20[11:29]/df20$Cases_Pending_20[30],5)*100 ,100
+                                         ,round(df20$Cases_Pending_20[31:35]/df20$Cases_Pending_20[36],5)*100,100 ))
+```
+
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+library(ggplot2)
+library(ggthemes)
+bardiag = function(df, ax, ay, cl, tit, val_lab, x_lab, y_lab ,wd = 0.9){
+  bard = ggplot(data=df, aes(x = ax, y = ay ) ) +
+    geom_bar(stat="identity", fill = cl,width = wd)+geom_text(aes(label= val_lab ), vjust= -0.3, size=2.5)+ theme_clean()+
+    theme(axis.text.x = element_text(angle = 90, size = 7), axis.title = element_text(size = 10))+ ggtitle(tit) +
+    xlab(x_lab) + ylab(y_lab)
+  return(bard)
+}
+```
+
+Plotting the graphs for cases investigated by police, case disposed by police cases, pending by police for the year 2021 on crime-head and graph of cases pending by police for the year 2020 under IT Act, Under IPC Act, Under SLL Act.   
+
+
+## Total Cases Investigated
+
+**Year 2021**
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_case_investigated_IT_21 = bardiag(df21[1:9,], ax = df21$Crime_Head[1:9], ay
+                                       = df21$Cases_Invest[1:9], "#00c698", 
+                   "Police Cases Investigated - 2021", df21$cases_invest_per[1:9], 
+                   "crime head", "Cases investigated Percentage under IT Act", 0.5 )
+Plot_case_investigated_IT_21
+```
+
+The above figure shows that under IT Act of computer related offenses are highest with **78.46%**.
+
+```{r , echo = FALSE,warning =FALSE , message=FALSE}
+Plot_case_investigated_IPC_21= bardiag(df21[11:29,], ax = df21$Crime_Head[11:29], ay = df21$Cases_Invest[11:29], "#0069c0", 
+                   "Police cases investigated - 2021", df21$cases_invest_per[11:29], 
+                   "Crime Head", " Cases Investigated Percentage under IPC Act" )
+Plot_case_investigated_IPC_21
+```
+
+The above figure shows that cases investigated by Police "Under IPC Act" of Fraud are highest with **51.587%**.
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_cases_investigated_SLL_21 = bardiag(df21[31:35,], ax = df21$Crime_Head[31:35], ay = df21$Cases_Invest[31:35], "#0b1d78", 
+                   "Police cases Investigated - 2021", df21$cases_invest_per[31:35], 
+                   "crime head", " Cases investigated Percentage Under SLL Act", 0.4 )
+
+Plot_cases_investigated_SLL_21
+```
+
+The above figure shows that cases investigated by Police "Under SLL Act" of Copy Right Act are highest with **36.907%**.
+
+## Total Cases Disposed
+
+**Year 2021**
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_case_disposed_IT_21 = bardiag(df21[1:9,], ax = df21$Crime_Head[1:9], ay = df21$Cases_Disposed_21[1:9], "#00a9b5", 
+                                       "Police cases Disposed  - 2021", df21$cases_disposed_per[1:9], 
+                           "Crime Head", "Disposed Percentage under I.T Act", 0.5 )
+Plot_case_disposed_IT_21
+```
+
+The above figure shows that cases Disposed under IT Act of computer related offenses are highest with **81.767%**.            
+
+
+```{r , echo = FALSE ,warning =FALSE}
+Plot_case_disposed_IPC_21= bardiag(df21[11:29,], ax = df21$Crime_Head[11:29], 
+                                   ay = df21$Cases_Disposed_21[11:29], "#00c698", 
+                                       "Police cases Disposed  - 2021", df21$cases_disposed_per[11:29], 
+                         "crime head", "Disposed Percentage under IPC Act" )
+
+Plot_case_disposed_IPC_21
+```
+
+The above figure shows that cases Disposed by Police "Under IPC Act" of Fraud
+are highest with **51.127%**.
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_cases_disposed_SLL_21 = bardiag(df21[31:35,], ax = df21$Crime_Head[31:35],
+                                    ay = df21$Cases_Disposed_21[31:35], "#0069c0", 
+                                         "Police cases Disposed - 2021", df21$cases_disposed_per[31:35], 
+                            "crime head", "Disposed Percentage Under SLL Act", 0.4 )
+Plot_cases_disposed_SLL_21
+```
+
+The above figure shows that cases Disposed by Police "Under SLL Act" of Copy Right Act and Other SLL Crimes are highest with **36.306%**.
+
+
+**Total Cases Pending**
+
+**Year 2021**
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+Plot_case_pending_IT_21 = bardiag(df21[1:9,], ax = df21$Crime_Head[1:9],
+                        ay = df21$Cases_Pending_21[1:9], "#0b1d78", 
+                                       "Police cases Pending- 2021", df21$cases_pending_per[1:9], 
+              "crime head", "Pending Cases Percentage under I.T. Act ", 0.45 )
+Plot_case_pending_IT_21
+```
+
+The above figure shows that Cases pending under IT Act of computer related offenses are highest with **75.194%**.
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+Plot_case_pending_IPC_21= bardiag(df21[11:29,], ax = df21$Crime_Head[11:29], ay = df21$Cases_Pending_21[11:29], "#00a9b5", 
+                                       "Police cases Pending - 2021", df21$cases_pending_per[11:29], 
+                                       "crime head", "Pending Cases Percentage under IPC Act" )
+Plot_case_pending_IPC_21
+```           
+
+The above figure shows that cases pending by Police "Under IPC Act" of Fraud are highest with **51.853%**.
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+Plot_cases_pending_SLL_21 = bardiag(df21[31:35,], ax = df21$Crime_Head[31:35],
+                                    ay = df21$Cases_Pending_21[31:35],     "#00c698","Police cases Pending - 2021", df21$cases_pending_per[31:35], 
+                                    "crime head", 
+                                    " Pending Cases Percentage Under SLL Act", 0.4 )
+Plot_cases_pending_SLL_21
+```   
+
+The above figure shows that cases pending by Police "Under SLL Act" of Copy Right Act are highest with **37.195 %**.
+
+**Year2020**
+
+```{r,echo=FALSE , warning=FALSE , message=FALSE}
+Plot_case_pending_IT_21 = bardiag(df20[1:9,], ax = df20$Crime_Head[1:9], ay = df20$Cases_Pending_20[1:9], "#0069c0", 
+                                   "Police cases Pending  - 2020", df20$cases_pending_per[1:9], 
+                             "crime head", " Pending Percentage under I.T Act", 0.5 )
+Plot_case_pending_IT_21
+```    
+
+The above figure shows that Cases pending under IT Act of computer related offenses are highest with **81.93%**.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+Plot_case_pending_IPC_20= bardiag(df20[11:29,], ax = df20$Crime_Head[11:29],
+ay = df20$Cases_Pending_20[11:29], "#0b1d78", 
+                                 "Police cases Pending - 2020", df20$cases_pending_per[11:29], 
+                                 "crime head", "Pending Cases Percentage under 
+                                 IPC Act" )
+Plot_case_pending_IPC_20
+```
+
+The above figure shows that Cases pending under I.P.C of computer related offenses are highest with **48.26%**.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+Plot_cases_pending_SLL_20 = bardiag(df20[31:35,], ax = df20$Crime_Head[31:35],
+                                    ay = df20$Cases_Pending_20[31:35],     "#00a9b5","Police Cases Pending - 2020", df20$cases_pending_per[31:35], 
+                                    "crime head", 
+                                    " Pending Cases Percentage Under SLL Act", 0.4 )
+Plot_cases_pending_SLL_20
+```
+
+The above figure shows that cases pending by Police "Under SLL Act" of Copy Right Act are highest with **45.65%**.
+
+## Police Disposal Rate of Cyber Crime Cases (State-wise)
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+library(readxl)
+dfU21 = read.csv("st2021.csv")
+dfU21 = cbind(dfU21, Rates_States=(dfU21$Cases_Disposed[1:28])/(dfU21$Mid_Year_Projected_Population[1:28]))
+statewise = ggplot(data = dfU21, aes(x = States , y = Rates_States))+geom_bar(stat = "identity", fill = "#00c698")+theme_clean()+theme(axis.text.x = element_text(angle = 90, size = 7))+geom_text(aes(label= round(dfU21$Rates_States,2) ), vjust= -0.3, size=2.5)
+statewise
+```           
+
+## Total Cyber Crimes for Investigation and their Disposal by Police           
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+df = read.csv("trend1.csv")
+attach(df)
+plot = ggplot(data = df , aes(x =  year)) + 
+  geom_line(aes(y = Cases_Invest_21),color = "darkred")+
+  geom_point(aes(y = Cases_Invest_21),color = "black")+
+  geom_line(aes(y = Cases_Disposed_21),color = "steelblue")+
+  geom_point(aes(y = Cases_Disposed_21),color = "black")+ggtitle("Cyber Crimes for Investigation and Disposal")
+plot+theme_clean()
+```        
+
+Upper line shows Total Cyber Crimes for Investigation and lower line shows their disposal. This graph shows Total Cyber Crimes for Investigation and their Disposal by Police.  
+
+## Graphical Representations
+
+**Union Territories**
+
+**Year 2021** 
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+data1 = read.csv("utplot.csv")
+Plot = bardiag(data1, ax = data1$UT, ay = data1$X_2021,"#00c698", 
+                                  "Police cases Investigated  2021", data1$X_2021, 
+                                  "UNION TERRITORIES", " CASES ", 0.4 )
+Plot
+```
+
+The above figure shows that cases investigated in 2021 are more in Delhi than the other union territories.
+
+**Year 2020**
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+Plot1 = bardiag(data1, ax = data1$UT, ay = data1$X_2020, "#00c698", 
+               "Police Cases Investigated 2020", data1$X_2020, 
+               "UNION TERRITORIES", " CASES ", 0.4 )
+Plot1
+```
+
+The above figure shows that cases investigated in 2020 are more in Delhi than the other union territories.
+s
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+data = read.csv("Ut_trend.csv")
+x = data$Year
+y = data$Investigated
+
+plot(x,y,xlab = "year",ylab = "Cases Investigaed",main = "UNION TERRITORY DELHI",
+lwd = 3,  pch = 20)
+lines(x,y,col = "darkred")
+
+
+```
+This curve shows that crimes investigated are increasing every year.
+
+**States**
+
+**Year 2021** 
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+data = read.csv("stplot.csv") 
+attach(data)
+plot2021 = bardiag(data, ax = data$States, ay = data$investigated_21, "#00a9b5", 
+                    "Crimes Investigated State Wise - 2021", data$investigated_21, 
+                    "States", "No. of Cases Investigated " )
+plot2021
+```
+
+**Year 2020**
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+data = read.csv("stplot.csv")
+plot2020 = bardiag(data, ax = data$States, ay = data$Investigated_20, "#00a9b5", 
+                   "Crimes Investigated State Wise - 2020", data$Investigated_20, 
+                   "States", "No. of Cases Investigated " )
+plot2020
+```
+
+From the graphs of year 2021 and 2020 it has been observed that cases investigated in the **three major states** Karnataka, Maharashtra, Telangana have the higher number of cases investigated by Police than the other states.
+
+```{r, echo=FALSE,warning=FALSE,message=FALSE}
+data = read.csv("stplt2021.csv")
+data <- reshape2::melt(data , id.vars = "States")
+plot_st = ggplot(data, aes(States, value, fill = variable)) +
+  geom_col(position = "dodge")+theme_clean()+ ggtitle("Cases Investigated: Major States")
+plot_st
+```
+
+This graph shows that cases investigated in Karnataka , Maharashtra , Telangana are increasing from year 2017 to 2021.
+
+### Testing location (crimehead-wise)         
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+rm(list = ls())
+data = read.csv("yearwise.csv")[-c(10,30,36,37),]
+data = data[,-c(1,2)]
+for (i in 1:20) {
+  data[[i]] = data[[i]]/sd(data[[i]])
+}
+
+kruskal.test( data[,seq(1,17,4)] ) 
+```
+
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e we fail to reject null hypothesis. Therefore there is no significant change in the location throughout the years 2017-2021. Hence we conclude that cases investigated crime head wise are statistically same for different years.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test( data[,seq(2,18,4)] )
+```
+
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e we fail to reject null hypothesis. Therefore there is no significant change in the location throughout the years 2017-2021. We conclude that cases true but insufficient evidence crime head wise are statistically same for different years.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test( data[,seq(3,19,4)] ) 
+```
+       
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e we fail to reject null hypothesis. Therefore there is no significant change in the location throughout the years 2017-2021. Hence we conclude that cases disposed crime head wise are statistically same for different years.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test( data[,seq(4,20,4)] ) 
+```
+
+Since p-value > 0.05, for Kruskal Wallis test, the result is not significant .i.e we fail to reject null hypothesis. Therefore there is no significant change in the location throughout the years 2017-2021. Hence we conclude that cases pending crime head wise are statistically same  for different years.                 
+
+### Testing variability and location (state-wise)             
+
+```{r , echo = FALSE ,warning =FALSE, message=FALSE}             
+rm(list = ls())            
+stdata = read.csv("statewise.csv")
+library(car)
+rownames(stdata) = stdata$States
+stdata = stdata[-1]
+stcasesinvest = stdata[seq(1,17,4)]
+stinvest = unlist(stcasesinvest)
+year = rep( c("y21","y20", "y19", "y18", "y17" ),each = 28 )
+st_casesinvest = data.frame(stinvest, year)
+leveneTest(stinvest~as.factor(year), st_casesinvest )
+```
+
+Since p-value > 0.05 , for Levene’s test hence the test is not significant i.e. we failed to reject null hypothesis.            
+Therefore there is no significant variability in the data through 2017-21.         
+Now testing for equality in location using Kruskal Wallis Test:
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(stinvest~as.factor(year), st_casesinvest )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant i.e. we failed to reject null hypothesis.            
+Therefore there is no significant change in the locations      throughout the years 2017-21 Hence, from both the tests,Since   there is no significant difference in location and variability in different years. Hence we conclude that cases investigated   are statistically same in terms of location and variability for different crimes.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+stcasestrue = stdata[seq(2,18,4)]
+sttrue = unlist(stcasestrue)
+st_casestrue = data.frame(sttrue, year)
+leveneTest(sttrue~as.factor(year), st_casestrue )
+```
+
+Since p-value > 0.05 , for Levene’s test hence the test is not significant i.e.
+we failed to reject null hypothesis.
+Therefore there is no significant variability in the data through 2017-21
+Now testing for equality in location using Kruskal Wallis Test
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(sttrue~as.factor(year), st_casestrue )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant
+i.e. we failed to reject null hypothesis. Therefore there is no significant 
+change in the locations throughout the years **2017-21**. From both the tests, Since there is no significant difference in location and variability in different years. Hence we conclude that cases true but insufficient evidence are statistically same in terms of location and variability for different crimes.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+stcasesdisposed = stdata[seq(2,18,4)]
+stdisposed = unlist(stcasesdisposed)
+st_casesdisposed = data.frame(stdisposed, year)
+leveneTest(stdisposed~as.factor(year), st_casesdisposed )
+```
+
+Since p-value > 0.05 , for levene’s test hence the test is not significant i.e. 
+we failed to reject null hypothesis.
+Therefore there is no significant variability in the data through **2017-21**
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(stdisposed~as.factor(year), st_casesdisposed )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant
+i.e. we failed to reject null hypothesis. Therefore there is no significant 
+change in the locations throughout the years **2017-21** Hence, from both the tests,Since there is no significant difference in location and variability in different years. Hence we conclude that cases Disposed are statistically same in terms of location and variability for different crimes.
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+stcasespending = stdata[seq(2,18,4)]
+stpending = unlist(stcasespending)
+st_casespending = data.frame(stpending, year)
+leveneTest(stpending~as.factor(year), st_casespending )
+```
+
+Since p-value > 0.05 , for Levene’s test hence the test is not significant  
+i.e. we failed to reject null hypothesis.
+Therefore there is no significant difference in variability in the data through **2017-21**    
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+kruskal.test(stpending~as.factor(year), st_casespending )
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant i.e. we failed to reject null hypothesis. Therefore there is no significant change in the locations throughout the years **2017-21** Hence, from both the tests, Since there is no significant difference in location and variability in different years, we conclude that cases pending are statistically same in terms of location and variability for different crimes.       
+
+### Paired Wilcoxon Signed-Rank test
+
+The Paired Wilcoxon Signed-Rank test is a non parametric alternative to the paired t-test for comparing the mean difference means in case of dependent samples.       
+The goal of the test is to determine if two or more sets of pairs are different from one another in a statistically significant manner.                          
+Test assume that the pairs in the data come from dependent populations               
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+wilcox.test( stdata$Cases_Invest_17, stdata$Cases_Invest_21, paired = TRUE )
+```
+
+The p-value < 0.05. We conclude that the cases investigated in year 2017 are significantly different from cases investigated in year 2021.
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+wilcox.test( stdata$Cases_Disposed_17, stdata$Cases_Disposed_21, paired = TRUE )
+```
+
+The p-value < 0.05. We conclude that the cases Disposed in year 2017 are significantly different from cases Disposed in year 2021.           
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+wilcox.test( stdata$Cases_Pending_17, stdata$Cases_Pending_21, paired = TRUE )
+```
+The p-value < 0.05. We conclude that the cases pending in year 2017 are significantly different from cases pending in year 2021.           
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE}
+wilcox.test( stdata$True_cases.but.insufficient.evidence_17, stdata$True_cases.but.insufficient.evidence_21, paired = TRUE )
+```
+
+The p-value < 0.05. We conclude that the cases true but insufficient evidence in year 2017 are significantly different  from cases true but insufficient evidence in year 2021.   
+
+## Hierarchical Cluster Analysis
+          
+In Hierarchical Cluster Analysis (HCA), the observations are grouped together on the basis of their mutual distances. It is visualized through a hierarchical tree, called dendrogram  tree. Objects in the dendrogram are linked together based on their similarity.
+
+```{r , echo=FALSE,warning =FALSE,message=FALSE}
+rm(list = ls())
+library(factoextra)
+library(cluster)
+data = read.csv("yearwisecluster.csv")
+rownames(data) = data$Crime_Head
+data = data[-1]
+data.scaled = scale(data)
+```
+
+***Variables under consideration:***
+
+• Cases Investigated         
+• Cases Disposed         
+• Cases Pending        
+• Cases True but Insufficient evidence.        
+
+***Data Structure:***
+
+• Each Crime Head corresponds to a vector of order 20 $\times$ 1 using the observations of the above variables for the years 2017 - 2021.        
+• The vectors are made for the Crime Heads, then the Agglomerative HCA and Divisive HCA is applied.         
+• There are 33 Crime Heads used in this study.
+
+### Agglomerative HCA:
+
+Operates by successive merger of cases.       
+• Begin with N clusters each containing single cases and at each stage, two most similar groups are merged to form a new cluster, thus reducing the no. of clusters by 1           
+• The process is continued till all subgroups fuse to form a single cluster.                       
+
+```{r , echo = FALSE , warning = FALSE, message = FALSE}
+res.agnes <- agnes(x = data, # data matrix
+stand = TRUE, # Standardize the data
+metric = "euclidean", # metric for distance matrix
+method = "ward" # Linkage method
+)
+fviz_dend(res.agnes,k = 4,color_labels_by_k = TRUE, cex = 0.5,rect = TRUE, ggtheme = theme_clean())
+```
+
+In the dendrogram displayed above, each leaf corresponds to one object. As we move up the tree, objects that are similar to each other are combined into branches, which are themselves fused at a higher height.
+
+The height of the fusion, provided on the vertical axis, indicates the similarity/distance between two objects/clusters. 
+It has been observed that computer related offenses , electronic form, Cheating ,fraud are higher forming one cluster.
+
+### Divisive HCA            
+
+• Divisive method operates by successive splitting of group.                
+• Initially starts with a single group (i.e.one single cluster).              
+• Group is divided into two groups                
+• Continue till there are n groups each with a single object.                   
+
+On the other hand if Divisive HCA is applied the major four crimes  computer related offenses , electronic form, Cheating, fraud in one cluster and others in another cluster.   
+
+```{r , echo = FALSE ,warning =FALSE,message=FALSE, echo=FALSE}
+res.diana <- diana(x = data, # data matrix
+stand = TRUE, # standardize the data
+metric = "euclidean")
+fviz_dend(res.diana,k = 4,color_labels_by_k = TRUE,cex = 0.5,rect = TRUE, ggtheme = theme_clean())
+```
+
+**Interpretation**  
+
+It can be seen that the dendrogram tree just flattens down after a distance level of 10 units, which in turn divides the Crime Heads into 3 clusters.
+
+***Cluster 1***
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+rownames(data)[res.diana$order][1:29]
+```
+
+In this cluster, it can be seen that the Crime Heads with comparatively lower incidence rate are inlcuded. 
+
+***Cluster 2***
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+rownames(data)[res.diana$order][30:32]
+```
+
+***Cluster 3***
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+rownames(data)[res.diana$order][33]
+```
+
+The crime incidence of Computer related offenses is very high as compared to the other crime heads. Hence its distance comes out to be very high from the other crime heads. Consequently, it is alone in the third cluster.
+

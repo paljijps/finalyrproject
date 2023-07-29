@@ -1,0 +1,289 @@
+---
+documentclass: article
+title: "**Analysis of Cyber crimes under IT Act and IPC Act**"
+author: "Hitika"
+date: "July 10, 2023"
+output:
+  pdf_document: 
+    number_sections: TRUE
+toc: TRUE   
+papersize: a4   
+fontsize: 14    
+geometry: margin=1in    
+
+---
+
+
+# Analysis of Cyber crimes under IT Act and IPC Act       
+\makebox[\textwidth]{\bf{Hitika}} 
+
+## Introduction
+
+### Information Technology ACT, 2000
+
+The IT Act was introduced in 17 October 2000. It is the primary law in India dealing with cyber crime and electronic commerce. The original Act contained 94 sections, divided into 13 chapters and 4 schedules. The laws apply to the whole of India. If a crime involves a computer or network located in India, persons of other nationalities can also be indicted under the law.
+The sections of IT Act included in the analysis are
+
+- Tampering Computer Source Documents (Section 65)						
+- Computer Related Offences (Sec 66 & Sec 66 B to E)(TOTAL)						
+- Cyber Terrorism (Section 66F)						
+- Publication/ transmission of obscene / sexually explicit act in electronic form 					
+
+
+
+![rates section-wise yearly it-act cases]("photos/it.png")
+
+
+
+The figure 1 shows the rate of cases of Information Technology Act, 2000 being registered in INDIA per 1 lakh population in years 2016-21. One must note that the COMPUTER RELATED OFFENSES (Sec 66 & Sec 66 B to E) are reported mostly.
+
+
+
+#### Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+This includes punishment regarding sending offensive messages through communication service,Punishment for dishonestly receiving stolen computer resource or communication, Punishment for identity theft, Punishment for cheating by personation by using computer resource, Punishment for violation of privacy, Penalty and compensation for damage to computer, computer system, etc.
+
+
+### Indian Penal Code , 1862
+
+The Indian Penal Code (IPC) is the official criminal code of India. It is a comprehensive code intended to cover all substantive aspects of criminal law. It came into force in India during the British rule in 1862. 
+The sections of IPC included in the analysis are
+
+- Data theft (Sec.379 to 381)						
+- Fraud (Sec.420 r/w Sec.465,468-471 IPC)						
+- Cheating (Sec.420)						
+- Forgery (Sec.465, 468 & 471)	
+
+
+
+![rates section-wise yearly ipc-act cases]("photos/ipc.png")
+
+
+
+The figure 2 shows the rate of cases of Indian Penal Code (here only those sections are included which include punishments to cyber crimes ) being registered in INDIA per 1 lakh population in years 2016-21. One must note that the FRAUD cases are reported mostly.
+
+#### Fraud (Sec.420 r/w Sec.465,468-471 IPC)	
+
+This include that whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment and shall also be liable to fine.
+
+\newpage
+
+## Percentage share of major crimes under IT Act and IPC
+
+```{r, echo=FALSE,warning =FALSE, message=FALSE}
+
+rm(list = ls())
+library(readxl)
+d<-read_excel("dataset.xlsx", sheet = "Sheet4")
+yr<-d[[1]]
+cro<-d[[3]]
+fr<-d[[8]]
+t<-d[[15]]
+
+pshare = function(x,y){
+per_sh = c()
+for (i in 1:length(x)) {
+per_sh[i] = (x[i]/y[i]) 
+}
+return(100*per_sh)
+}
+cbind(year=yr,CRO=cro,Total=t, per_share = round(pshare(cro,t),4))
+cbind(year=yr,Fraud=fr,Total=t, per_share = round(pshare(fr,t),4))
+
+```
+
+The above data table shows that Computer Related Offenses (Sec 66 & Sec 66 B to E) ,( here , Computer Related Offenses (Sec 66 & Sec 66 B to E) is named CRO ) , has been contributing about 48% and Fraud contribute about 15% of the total cyber crimes each year  as per the NCRB data for cyber crimes from year 2016 - 2021. Hence Computer Related Offenses (Sec 66 & Sec 66 B to E) is the major contributor to the cyber crimes in INDIA.
+
+
+## Randomness and Association
+
+### 1-sample Run test for randomness
+
+1-sample run test is used to test whether the observations are random
+
+#### Computer related offenses (Sec 66 & Sec 66 B to E) 
+
+```{r, echo=FALSE, warning=FALSE}
+cro_c<-d[[22]]
+library(DescTools)
+RunsTest(cro_c)
+```
+
+This shows that year wise incidence of cases of Computer related offenses is random .
+
+#### Fraud
+
+```{r, echo=FALSE, warning=FALSE}
+fr_c <- d[[23]]
+RunsTest(fr_c)
+```
+
+This shows that year wise incidence of cases of Fraud is random .
+
+### Kolmogorov Smirnov test
+
+This test is used for testing whether both the samples come from same distribution
+
+Test statistics,
+
+
+![]("photos/ks.png")
+
+where $F_{1,n}$ and $F_{2,m}$ are the empirical distribution functions of the first and the second sample respectively, and sup is the supremum function.
+
+```{r, echo = FALSE, warning= FALSE}
+
+data<-read_excel("levene.xlsx", sheet = "Sheet5")
+y2016 <- data[[5]]
+y2017 <- data[[6]]
+y2018 <- data[[7]]
+y2019 <- data[[8]]
+y2020 <- data[[9]]
+y2021 <- data[[10]]
+
+ks.test(y2016,y2021)
+ks.test(y2017,y2021)
+ks.test(y2018,y2021)
+ks.test(y2019,y2021)
+ks.test(y2020,y2021)
+
+```
+This shows that the distribution of computer related offenses throughout the states remains the same in the years 2016 - 2021 i.e. cases are concentrated in specific states and are distrubuted similarily each year.
+
+
+### Kendall Tau Measure of Association
+
+It measures the relationship between two columns of ranked data.
+
+Null hypothesis, The columns are not associated with each other
+against,         The columns are associated with each other
+
+Test statistics,
+
+
+![]("photos/k_tau.png")
+
+
+Test is to reject null hypothesis for
+
+
+```{r, echo=FALSE, warning=FALSE}
+cor.test(cro_c,fr_c,method="kendall")
+```
+
+This shows that there is no association between cyber crimes under Computer Related Offenses (Sec 66 & Sec 66 B to E) and Fraud.
+
+
+## Testing variability and location
+
+Now, checking for variability wrt location and scale for Computer Related Offenses (Sec 66 & Sec 66 B to E) in years 2016-21 using Levene's Test for variability and Kruskal Wallis Test for location
+
+### Levene Test
+
+Null hypothesis, variances of all samples are equal
+against ,        variances of all samples are not equal
+
+Test statistics, 
+
+
+![]("photos/levene.png")
+
+where,
+k: number of different groups to which the sampled cases belong.
+Ni: Number of elements in different groups.
+N: total number of cases in all groups
+
+
+![]("photos/levene1.png")
+
+where,
+$Y_{ij}$: the value of jth case and ith group
+
+Test is to reject null hypothesis for larger values of W
+
+```{r, echo=FALSE,warning =FALSE}
+library(car)
+
+#Test for Variability
+leveneTest(cases~as.factor(year), data[-1])
+
+```
+
+Since p-value > 0.05 , for levene's test hence the test is not significant i.e. we failed to reject null hypothesis. Therefore there is no significant variability in the data through 2016-21
+
+Now testing for equality in location using Kruskal Wallis Test
+
+### Kruskal Wallis Test
+
+Null hypothesis, location of all populations is same
+against,         location of any two populations differs
+
+Test Statistics,
+
+
+![]("photos/kw.png")
+
+
+
+Test is to reject null hypothesis for large values OF H
+
+```{r, echo=FALSE,warning =FALSE}
+kruskal.test(cases~as.factor(year), data[-1])
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, the result is not significant i.e. we failed to reject null hypothesis. Therefore there is no significant change in the locations throughout the years 2016-21
+
+
+Hence, from both the tests,       
+Since there is no significant difference in location and variability in different years. Hence we conclude that Computer Related Offenses (Sec 66 & Sec 66 B to E) are statistically same in terms of location and variability for different states.
+
+
+## State-wise comparison for Cases of Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+### Count of cases in each state
+
+
+
+![counts state-wise yearly CRO cases]("photos/counts_state_cro.png")
+
+
+
+The figure 3 shows the highest number of cases being registered in Karnataka, followed by Uttar Pradesh and Assam. But one must note that the population in these states may vary. So to get a better
+comparison, rates can be calculated, which gives the cyber crime cases registered in the state per 1 lakh population. Mid
+year projected population for each state for the year 2016 - 2021 is available. Hence the Crime Rate can be calculated.
+
+
+### Crime rate in each state
+
+
+
+![rates state-wise yearly CRO cases]("photos/rates_state_cro.png")
+
+ 
+
+The figure 4 shows the highest rate of cases being registered in Karnataka wrt 1 Lakh population in respective year, followed by Assam and UttarPradesh. But one must note that the Uttrakhand had observed a peak in year 2021
+
+The crime rate as well as counts of cyber crimes in Karnataka is surprisingly high.
+The pattern of crime rate wrt 1 Lakh population in respective year in Karnataka can be seen in figure 5.
+
+
+![karnataka]("photos/karnataka.png")
+
+
+
+### Year wise increment of Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+
+```{r, echo=FALSE, warning =FALSE}
+
+pinc = function(x){
+per_inc = c()
+for (i in 2:length(x)) {
+per_inc[i] = x[i]/x[i-1] - 1
+}
+return(100*per_inc)
+}
+cbind(year=yr, CRO=cro, per_inc = round(pinc(cro),4))
+```
+
+The above data table shows the Computer Related Offenses got a peak in year 2019 when they increased by 65% as compared to previous year 2018. However a slight % decrease can be seen after that .

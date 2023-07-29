@@ -1,0 +1,11 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+|IT Act                                   |      Are      |  Cool |
+|---------- _________________            |:-------------:|------:|
+|  Tampering computer source documents   |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |

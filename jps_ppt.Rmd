@@ -1,0 +1,55 @@
+---
+title: 'Cyber Crimes in India: Trend and Future Prediction'
+author: "Jaswinderpal Singh"
+date: "July 10, 2023"
+output:
+  beamer_presentation: default
+theme: Copenhagen
+aspectratio: 169
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Cyber Crimes
+
+Cyber crimes are a new class of crimes rapidly increasing due to extensive use of Internet and I.T. enabled services.  Any criminal activity with the use of computers, networks, or the internet for the exploitation of data and resources comes under cyber crimes. Examples include hacking, identity theft, phishing scams, and distributing malware etc. Women are commonly targeted for cyber stalking, cyber pornography, impersonation etc. 
+
+
+## Objectives
+
+- To analyze the year-wise trend and future prediction of the number of cyber-crimes registered in India using the data from 2002 - 2021.         
+- State and U.T. - wise comparisons for the cyber-crimes incidence.         
+- Application of Non-Parametric tests to check similarity of distributions and randomness of cases, keeping the population variation of the states under consideration.            
+- To identify major cyber-crime motives in India.           
+- Dividing States into clusters based on their fraud cyber crimes in the years 2017-2021.     
+- To analyze of Police Disposal of cyber crimes and dividing statistically similar crime-heads into clusters.
+- To analyze how court matters involving cyber crime are handled and disposal of persons arrested.      
+- To figure out major cyber crimes against women and children.
+
+
+## Cyber Crimes: State Wise
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+source("viz2021.R")
+
+barst2020
+```
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+

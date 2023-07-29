@@ -1,0 +1,37 @@
+---
+title: "project jasmeen"
+output: html_document
+date: "2023-03-30"
+---
+
+```{r}
+rm(list = ls())
+library(readxl)
+library(ggplot2)
+df = read_excel("2021start.xlsx")
+```
+
+```{r}
+df$Cases_Invest=as.numeric(df$Cases_Invest)
+cases_invest_per = (df$Cases_Invest[1:21]/df$Cases_Invest[22])*100
+df = cbind(df ,cases_invest_percent = c(round(cases_invest_per,2),100))
+```
+
+```{r}
+df$True_cases=as.numeric(df$True_cases)
+cases_true_per = (df$True_cases[1:21]/df$True_cases[22])*100
+df = cbind(df , cases_true_per = c(round(cases_true_per,2),100))
+```
+
+```{r}
+df$Cases_Disposed = as.numeric(df$Cases_Disposed)
+cases_disposed_per = (df$Cases_Disposed[1:21]/df$Cases_Disposed[22])*100
+df = cbind(df , Cases_Disposed_per = c(round(cases_disposed_per,2),100))
+```
+
+```{r}
+df$Cases_Pending = as.numeric(df$Cases_Pending)
+cases_pending_per = (df$Cases_Pending[1:21]/df$Cases_Pending[22])*100
+df = cbind(df , Cases_pending_per = c(round(cases_pending_per,2),100))
+df
+```

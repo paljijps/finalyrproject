@@ -1,40 +1,87 @@
 ---
 documentclass: report
-title: "**Cyber Security and Cyber Crimes in India**"
-subtitle: "**Project Report **"
-author: "Jaswinderpal Singh, Hitika, Jasmeen Sharma,   \nKartik Setia, Kanishka Jaggi, Kajol  \n**M.Sc. Statistics II Year - 2023**   \n.  \n*Under the Guidance of:* Prof. Narinder Kumar  \n**Department of Statistics, Panjab University, Chandigarh**"
-date: 23 March 2023
-toc: TRUE
+title: "**Cyber Crimes in India**"
+date: June 30, 2023.
 geometry: margin=1in
 papersize: a4
-fontsize: 14
-output: 
-    pdf_document:
-        number_sections: TRUE
-        extra_dependencies: ["crimson"]
+fontsize: 12
+output:
+  pdf_document:
+      latex_engine: xelatex
+      number_sections: TRUE
+header-includes:
+   - \usepackage{setspace}
+   - \singlespacing
+mainfont: Times New Roman
 ---
 
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{Cyber Crimes in India}
+            
+        \vspace{0.3cm}
+        \LARGE
+        Project Report
+            
+        \vspace{1.5cm}
+            
+        \textbf{Jaswinderpal Singh, Hitika, Jasmeen Sharma,} \\
+        \textbf{Kartik Setia, Kanishka Jaggi, Kajol } \\
+        
+        \vspace{0.5cm}
+        
+        M.Sc. Statistics, Semester - 4. \\
+        
+        \vspace{1cm}
+        
+        \emph{Under the guidance of}: Prof. Narinder Kumar
+        
+         
+        \vspace{4cm}
+    
+            
+        \includegraphics[width=0.4\textwidth]{logo.png}
+            
+        \Large
+        Department of Statistics\\
+        Panjab University, Chandigarh - 160014 (India) \\
+        
+        \vspace{0.5cm}
+        
+        June 30, 2023.
+            
+    \end{center}
+    
+\end{titlepage}
 
 
-# Introduction
+\chapter*{Preface}
 
 
+\textsc{\textbf{\underline{Cyber Crimes} }}
 
-## Cybersecurity  
 
-  Cybersecurity refers to the practices and technologies used to protect computers,
-networks, and electronic data from unauthorized access, use, disclosure, disruption,
-modification, or destruction. It includes a range of security measures such as firewalls,
-encryption, intrusion detection and prevention systems, and incident response plans. The goal of cybersecurity is to secure and protect sensitive information, maintain the availability of critical systems, and ensure the integrity of data and communications. It also includes educating employees and users on safe practices to minimize human error.
+Cyber crimes are a new class of crimes rapidly increasing due to extensive use of Internet and I.T. enabled services.  Any criminal activity with the use of computers, networks, or the internet for the exploitation of data and resources comes under cyber crimes. Examples include hacking, identity theft, phishing scams, and distributing malware etc. Women are commonly targeted for cyber stalking, cyber pornography, impersonation etc. 
 
-## Cyber Crimes
+\textbf{\underline{Objectives} }
 
-   Cybercrime refers to any criminal activity that involves the use of computers, networks, or the internet. Examples include hacking, identity theft, phishing scams, and distributing
-malware etc.
+• To analyze the year-wise trend and future prediction of the number of cyber-crimes registered in India using the data from 2002 - 2021.         
+• State and U.T. - wise comparisons for the cyber-crimes incidence.         
+• Application of Non-Parametric tests to check similarity of distributions and randomness of cases, keeping the population variation of the states under consideration.            
+• To identify major cyber-crime motives in India.           
+• Dividing States into clusters based on their fraud cyber crimes in the years 2017-2021.    
+• To analyze of Police Disposal of cyber crimes and dividing statistically similar crime-heads into clusters.
+• To analyze how court matters involving cyber crime are handled and disposal of persons arrested.      
+• To figure out major cyber crimes against women and children.
 
-Cyber crimes are a new class of crimes rapidly increasing due to extensive use of Internet and I.T. enabled services.
+***Keywords:*** Cyber Crimes, Phishing, Malware, Fraud, Statistics, Non-Parametric Inference, Statistical Cluster Analysis.
 
-### Major Cyber Crimes in India
+
+\textbf{\underline{Major Cyber Crimes in India} }
+
 
 Some major cyber crimes in India include:         
 1. *Hacking:* Unauthorized access to computer systems, networks, or websites to steal sensitive information or disrupt operations.        
@@ -45,293 +92,1994 @@ Some major cyber crimes in India include:
 6. *Child pornography:* Using the internet to distribute or view child pornography.   
 7. *Ransomware:* A type of malware that encrypts a victim's files and demands payment to restore access.   
 8. *Crypto jacking:* Unauthorized use of someone's computer or device to mine cryptocurrency.   
-9. *Distributed Denial of Service (DDoS) attacks:* Overwhelming a website or network with traffic to make it unavailable.
+9. *Distributed Denial of Service (DDoS) attacks:* Overwhelming a website or network with traffic to make it unavailable.        
 10. *Spamming:* Sending unsolicited messages through email or other means.
 
+Various studies are done as far as cyber-crimes in India are concerned. M. Dasgupta (2009) has classified the cyber-crimes on different basis and grounds like computer as a target as well as victim. A. Bhangla and J. Tuli (2021) conducted the study on the legal framework of cyber-crimes in India. An increase of nearly 6 % from the year 2020 is noted in the yaer 2021 as far as the cyber crimes in India are concerned.
 
-These are some major cyber crimes reported in India, but there can be various other types of cyber-attacks that are emerging with technology advancements.
 
+\tableofcontents
 
-### Biggest Recent Cyber Breaches in India:
+\newpage
 
-**AIIMS ransomware attack: what it means for health data privacy**
+# Cyber Crimes in India: Trend and Future Prediction
 
-*Date:* November 2022       
-*Impact:*  1.3 TB data encrypted and five servers affected in AIIMS ransomware attack   
+## Introduction
 
-*Details:*  As per the preliminary analysis, servers were compromised in the information technology network of the AIIMS by unknown threat actors due to improper network segmentation, which caused operational disruption due to non-functionality of critical applications. CERT-In and other stakeholder entities have advised necessary remedial measures.    
-No specific amount of ransom was demanded by the hackers though a message was discovered on the server suggesting that it was a cyberattack.        
-Earlier, investigations into the cyberattack, which had crippled the functioning of the premier health institution in New Delhi, had revealed that “the IP addresses of two emails, which were identified from the headers of files that were encrypted by the hackers, originated from Hong Kong and China’s Henan province”.    
-The report said these two addresses, ‘dog2398’ and ‘mouse63209’, were generated in the first week of November in Hong Kong. Another encrypted file was sent from Henan in China.        
-Investigations also revealed that the targeted servers were infected with three ransomware: Wammacry, Mimikatz and Trojan.        
-Most of the functions of e-Hospital application such as patient registration, appointment, admission, discharge etc. had been restored after two weeks of the attack.
-
-
-
-
-
-**Air India data breach highlights third-party risk**      
-
-*Date:* May 2021        
-*Impact:* personal data of 4.5 million passengers worldwide       
-
-*Details:* A cyberattack on systems at airline data service provider SITA resulted in the leaking of personal data of passengers of Air India. The leaked data was collected between August 2011 and February 2021, when SITA informed the airline. Passengers didn't hear about it until March, and had to wait until May to learn full details of what had happened. The cyber-attack on SITA’s passenger service system also affected Singapore Airlines, Lufthansa, Malaysia Airlines and Cathay Pacific
-
-
-
-**CAT burglar strikes again: 190,000 applicants’ details leaked to dark web**     
-
-*Date:* May 2021
-
-*Impact:* 190,000 CAT applicants’ personal details
-
-*Details:* The personally identifiable information (PII) and test results of 190,000 candidates for the 2020 Common Admission Test, used to select applicants to the Indian Institutes of Management (IIMs), were leaked and put up for sale on a cybercrime forum. Names, dates of birth, email IDs, mobile numbers, address information, candidates’ 10th and 12th grade results, details of their bachelor’s degrees, and their CAT percentile scores were all revealed in the leaked database.
-
-The data came from the CAT examination conducted on 29 November 2020 but according to security intelligence firm CloudSEK, the same thread actor also leaked the 2019 CAT examination database.
-
-
-
-**Hacker delivers 180 million Domino’s India pizza orders to dark web**
-
-*Date:* April 2021
-
-*Impact:* 1 million credit card records and 180 million pizza preferences
-
-*Details:* 180 million Domino’s India pizza orders are up for sale on the dark web, according to Alon Gal, CTO of cyber intelligence firm Hudson Rock.
-
-Gal found someone asking for 10 bitcoin (roughly $535,000 or Rs. 4 crore) for 13TB of data that they said included 1 million credit card records and details of 180 million Dominos India pizza orders, topped with customers’ names, phone numbers, and email addresses. Gal shared a screenshot showing that the hacker also claimed to have details of the Domino’s India’s 250 employees, including their Outlook mail archives dating back to 2015.
-
-Jubilant FoodWorks, the parent company of Domino’s India, told IANS that it had experienced an information security incident, but denied that its customers’ financial information was compromised, as it does not store credit card details. The company website shows that it uses a third-party payment gateway, PayTM.
-
-
-
-**Trading platform Upstox resets passwords after breach report**
-
-*Date:* April 2021
-
-*Impact:* All Upstox customers had their passwords reset
-
-*Details:* Indian trading platform Upstox has openly acknowledged a breach of know-your-customer (KYC) data. Gathered by financial services companies to confirm the identity of their customers and prevent fraud or money laundering, KYC data can also be used by hackers to commit identity theft.
-
-On April 11, Upstox told customers it would reset their passwords and take other precautions after it received emails warning that contact data and KYC details held in a third-party data warehouse may have been compromised.
-
-Upstox apologised to customers for the inconvenience, and sought to reassure them it had reported the incident to the relevant authorities, enhanced security and boosted its bug bounty program to encourage ethical hackers to stress-test its systems.
-
-
-
-**Police exam database with information on 500,000 candidates goes up for sale**
-
-*Date:* February 2021
-
-*Impact:* 500,000 Indian police personnel
-
-*Details:* Personally identifiable information of 500,000 Indian police personnel was put up for sale on a database sharing forum. Threat intelligence firm CloudSEK traced the data back to a police exam conducted on 22 December, 2019.
-
-The seller shared a sample of the data dump with the information of 10,000 exam candidates with CloudSEK. The information shared by the company shows that the leaked information contained full names, mobile numbers, email IDs, dates of birth, FIR records and criminal history of the exam candidates.
-
-Further analysis revealed that a majority of the leaked data belonged to candidates from Bihar. The threat-intel firm was also able to confirm the authenticity of the breach by matching mobile numbers with candidates’ names.
-
-This is the second instance of army or police workforce data being leaked online this year. In February, hackers isolated the information of army personnel in Jammu and Kashmir and posted that database on a public website.
-
-
-
-**COVID-19 test results of Indian patients leaked online**
-
-*Date:* January 2021
-
-*Impact:* At least 1500 Indian citizens (real-time number estimated to be higher)
-
-*Details:* COVID-19 lab test results of thousands of Indian patients have been leaked online by government websites.
-
-What’s particularly worrisome is that the leaked data hasn’t been put up for sale in dark web forums, but is publicly accessible owing to Google indexing COVID-19 lab test reports.
-
-First reported by BleepingComputer, the leaked PDF reports that showed up on Google were hosted on government agencies’ websites that typically use *.gov.in* and *.nic.in* domains. The agencies in question were found to be located in New Delhi.
-
-The leaked information included patients’ full names, dates of birth, testing dates and centers in which the tests were held. Furthermore, the URL structures indicated that the reports were hosted on the same CMS system that government entities typically use for posting publicly accessible documents.
-
-Niamh Muldoon, senior director of trust and security at OneLogin said: “What we are seeing here is a failure to educate and enable employees to make informed decisions on how to design, build, test and access software and platforms that process and store sensitive information such as patient records.”
-
-He added that the government ought to take quick measures to reduce the risk of a similar breach from reoccurring and invest in a comprehensive information security program in partnership with trusted security platform providers.
-
-
-**User data from Juspay for sale on dark web**
-
-*Date:* January 2021
-
-*Impact:* 35 million user accounts
-
-*Details:* Details of close to 35 million customer accounts, including masked card data and card fingerprints, were taken from a server using an unrecycled access key, Juspay revealed in early January. The theft took place last August, it said.
-
-The user data is up for sale on the dark web for around $5000, according to independent cybersecurity researcher Rajshekhar Rajaharia. 
-
-
-
-**BigBasket user data for sale online**
-
-*Date:* October 2020
-
-*Impact:* 20 million user accounts
-
-*Details:* User data from online grocery platform BigBasket is for sale in an online cybercrime market, according to Atlanta-based cyber intelligence firm Cyble.
-
-Part of a database containing the personal information of close to 20 million users was available with a price tag of 3 million rupees ($40,000), Cyble said on November 7.
-
-The data comprised names, email IDs, password hashes, PINs, mobile numbers, addresses, dates of birth, locations, and IP addresses. Cyble said it found the data on October 30, and after comparing it with BigBasket users’ information to validate it, reported the apparent breach to BigBasket on November 1.
-
-
-
-**Unacademy learns lesson about security**
-
-*Date:* May 2020
-
-*Impact:* 22 million user accounts
-
-Details: Edutech startup Unacademy disclosed a data breach that compromised the accounts of 22 million users. Cybersecurity firm Cyble revealed that usernames, emails addresses and passwords were put up for sale on the dark web.
-
-Founded in 2015, Unacademy is backed by investors including Facebook, Sequoia India and Blume Ventures.
-
-
-**Hackers steal healthcare records of 6.8 million Indian citizens**
-
-*Date:* August 2019
-
-*Impact:* 68 lakh patient and doctor records
-
-*Details:* Enterprise security firm FireEye revealed that hackers have stolen information about 68 lakh patients and doctors from a health care website based in India. FireEye said the hack was perpetrated by a Chinese hacker group called Fallensky519.
-
-Furthermore, it was revealed that healthcare records were being sold on the dark web – several being available for under USD 2000.
-
-
-
-**Local search provider JustDial exposes data of 10 crore users**
-
-*Date:* April 2019
-
-*Impact:* personal data of 10 crore users released
-
-*Details:* Local search service JustDial faced a data breach on Wednesday, with data of more than 100 million users made publicly available, including their names, email ids, mobile numbers, gender, date of birth and addresses, an independent security researcher said in a Facebook post.
-
-
-
-**SBI data breach leaks account details of millions of customers**
-
-*Date:* January 2019
-
-*Impact:* three million text messages sent to customers divulged
-
-*Details:* An anonymous security researcher revealed that the country’s largest bank, State Bank of India, left a server unprotected by failing to secure it with a password.
-
-The vulnerability was revealed to originate from ‘SBI Quick’ – a free service that provided customers with their account balance and recent transactions over SMS. Close to three million text messages were sent out to customers.
-
-
-
-# Cyber Crimes in India: Statistics and Data Visualization
-
+Cyber Crimes are becoming serious threats to Digital India. As per the latest joint report published on May 3, 2023 by the *Internet and Mobile Association of India* (IAMAI) and data analytics firm ‘Kantar’, the active Internet users in India are more than 50% of the country’s population. India reported **52,974** fresh incidents of cyber-crimes in 2021, as per Crime in India (2021) Statistics of the National Crime Records Bureau.               
+In this section, the main objective is to have a visualization of Cyber Crimes in India among states and U.T.s. and the trend analysis for the country over the years along with predictions for the coming years.
 
 ## Cyber Crimes State-Wise:
 
+**Year 2020**
 
-### Year 2020
-
-```{r, warning=FALSE}
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
 rm(list = ls())
 source("viz2021.R")
 
 barst2020
 ```
 
+A total of **50,035** cyber crimes were registered in India with a rate of **3.7** cyber crimes per 1 lakh population as compared to 44,735 cyber crimes registered in 2019 with a rate of 3.34 cases per 1 lakh population, as per Crime in India (2020) Statistics of the National Crime Record Bureau. 
 
-The above figure shows the highest number of cases being registered in Uttar Pradesh, followed by Karnataka, Maharashtra and Telangana. But one must note that the population in these states may vary. So to get a better comparison, rates can be calculated, which gives the cyber crime cases registered in the state per 1 lakh population.
-Mid year projected population for each state for the year 2021 is available. Hence the Cyber Crime Rate can be calculated as:   
-$$Rate = \frac{No. \ of \ cases \ registered }{Mid \ year \ projected \ population \ (in \ lakhs)}$$
-```{r}
+The above figure shows the highest number of cases being registered in Uttar Pradesh in terms of numbers, followed by Karnataka, Maharashtra and Telangana. But one must note that the population in these states may vary. So, to get a better comparison, rates can be calculated, which gives the cyber-crime cases registered in the state per 1 lakh population. Mid-year projected population for each state for the year 2020 is available. Hence the Cyber Crime Rate can be calculated as
+
+
+$$\text{Rate} = \frac{\text{No. of cases registered} }{\text{Mid year projected population (in lakhs)} }$$
+
+Hence, keeping the population variation of the states into account, the better comparative picture here is given by the rates:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 barst2020r
 ```
-As far as the rates are concerned, Karnataka and Telangana emerged as the states with highest cyber crime rates followed by Assam, Uttar Pradesh and Maharashtra.
 
+***Interpretation:***    
 
-```{r}
+- The maximum cyber crime rate can be seen in the state of Karnataka with **16.15** cyber crimes per 1 lakh population during the year 2020. However, in terms of numbers the state was at the second position after Uttar Pradesh with a total of 10,741 cyber crimes reported in 2020.    
+
+- The cyber crimes in the state of Telangana are extremely high as far as the Rates are concerned. Telangana registered **13.38** cyber crimes per 1 lakh population in 2020, which was the second highest rate in the country.
+
+- In terms of numbers, Assam is far behind Maharashtra and Uttar Pradesh, but the rate in Assam is very high as compared to these populous states of the country. Assam registered cyber crimes with a rate of **10.15** in the year 2020.
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 major_states20 = df$cases_reg2020[ which(df$state %in% c("Telangana", "Assam", 
                             "Uttar Pradesh", "Karnataka", "Maharashtra") ) ]
 sum(major_states20)/df[40,4]
 ```
-**The above value indicates that almost 71.72579 % of the total cyber crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam.**
 
-### Year 2021
+**The above value indicates that almost 71.72579 % of the total cyber crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam. However, they contributed to almost 36% of the Indian Population.**
 
-```{r}
+**Year 2021**
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 barst2021
 ```
 
-From the above figure it looks like Telangana tops the Cyber Crimes tally followed by Uttar Pradesh and Karnataka in 2021. But for better comparison, let us see the Cyber Crime Rates, i.e. Cyber Crimes in a State per 1 lakh population.
+From the above figure it looks like Telangana tops the Cyber Crimes tally followed by Uttar Pradesh and Karnataka in 2021. It can be noticed that the cyber crimes in the state of Telangana almost doubled in a year, which is a matter of huge concern.       
 
 
-```{r}
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 barst2021r
 ```
+           
+But for better comparison, the Cyber Crime Rates, i.e. Cyber Crimes in a State per 1 lakh population, can be seen.     
 
-Now, from here it is evident that infact Telangana is the state with highest cyber crime rate of 27.28 cases per 1 lakh population, followed by Assam and Karnataka with rates 13.78 and 12.15 respectively.
 
-```{r}
+***Interpretation:***    
+
+- The state of Telangana emerged with the highest cyber crime rate of **27.28** cases per 1 lakh population. Telangana tops the tally in terms of number of cases also, during the year 2021, with **10,303** cyber crimes registered in the state during this year.  The rate figures are far away from the other states of the country.   
+
+- Uttar Pradesh registered second highest number of cases in the country, but the population in the state is also highest in the country. Due to this fact, the cyber crime rate in U.P. is comparatively low as compared too other major states. The tally was **8,829** cyber crimes with a rate of **3.81** cyber crimes per 1 lakh population.      
+
+- Cyber Crimes in Assam are continuously taking pace. In terms of numbers, Assam registered **4,846** cyber crimes in 2021, which is the 5th highest in the country, but the cyber crime rate in this state is very high. The cyber crime rate in the state is **13.78** cyber crimes per 1 lakh population, which is the second highest rate in the country.
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 major_states21 = df$cases_reg2021[ which(df$state %in% c("Telangana", "Assam", 
                             "Uttar Pradesh", "Karnataka", "Maharashtra") ) ]
 sum(major_states21)/df[40,5]
 ```
 
-**The above value indicates that almost 71.12168 % of the total cyber crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam. However, they together contributed almost 36% of the Indian Population**
+**The above value indicates that almost 71.12168 % of the total cyber-crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam. However, they together contributed almost 36% of the Indian Population.**       
 
 ### Cyber Crimes Trend: Major States
 
-These States can be analyzed further based on last 5 years as follows:
+Now, for the past 5 years, the cyber crime trend in these 5 major states is to be viewed. The trend is  shown for each state for the years 2017 - 2021.  The data can be visualized both in terms of actual crime registered count as well as in terms of rates in these states.
 
-```{r}
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 j = 1
 for (i in statelist) {
   cat("\n",nam[j],"\n")
-  show(trend_plot(i,  paste("Cyber Crime Trend",nam[j],"2017 - 2021"), i$cases) )
-  cat("\n")
-  show(trend_plot(i,  paste("Cyber Crime Rates Trend",nam[j],"2017 - 2021"), i$rates) )
+  show(trend_plot(i,  paste("Cyber Crime Trend",nam[j],"2017 - 2021"), i$cases, "No. of Cyber Crimes Registered") )
+  cat("\n", "\n")
+  show(trend_plot(i,  paste("Cyber Crime Rates Trend",nam[j],"2017 - 2021"), i$rates, "No. of Cyber Crimes Registered per 1 lakh population") )
   cat("\n")
   j = j+1
 }
 ```
   
-Now, it is evident from that  the states of Assam and Telangana are showing rapid increasing trend in Cyber Crimes over the last 5 years. However, Uttar Pradesh and Karnataka are registering some lesser number of cases as compared to previous years. The state of Maharashtra is slowly registering more number of cases as compared to previous years.         
 
+\textbf{\underline{Major findings from Major States} }
+
+- ***Telangana:*** The cyber crimes are increasing very rapidly in the state of Telangana. It is getting doubled every year since 2018, which is a huge concern. Recently, Telangana got a high jump in number of cyber crimes registered. Telangana registered **10,303** cyber crimes in 2021 with a rate of **27.28** cyber crimes per 1 lakh population as compared to the **5,024** cyber crimes in 2020 with a rate of **13.38** cyber crimes per 1 lakh population.   
+
+- ***Karnataka:*** The state of Karnataka registered the maximum of **12,020** cyber crimes in the year 2019 with a rate of **18.22** cyber crimes per 1 lakh population, which were just above double of the 5,839 cases registered in 2018 with a rate of 8.92. However, after that cyber crimes have slightly declined in the state and the figures of 2021 are 8,136 cyber crimes registered with a rate of 12.15 cases per 1 lakh population.
+
+- ***Maharashtra:*** Maharashtra, one of India's largest commercial and industrial centers of India is continuously having a high cyber crimes since 2018. The state seen a significant increase from 2018 to 2019 in which it registered 4,967 cyber crimes with a rate of 4.05 cyber crimes per 1 lakh population. Currently, the cyber crime rate in the state is stabilizing near **4.46** cyber crimes per 1 lakh population.
+
+- ***Assam:*** The state with surprisingly rapidly increasing cyber crimes in the past few years is the state of Assam. The cyber crime rate in Assam is increasing by 3-4 % by every passing year since 2019. Currently, Assam is the second highest state as far as the cyber crime rates are concerned with a rate of **13.78** cyber crimes per 1 lakh population.
+
+- ***Uttar Pradesh:*** Uttar Pradesh is not very far behind in terms of numbers as far as the cyber crimes are concerned, but the cyber crime rate in this state has declined in the past couple of years. Note that Uttar Pradesh is the most populous state in India as per the 2011 Census. In 2019, there were **11,416** cyber crimes registered in Uttar Pradesh with a high rate of **5.05** cyber crimes per 1 lakh population. However, in the recent year of 2021, the tally reduces to **8829** cyber crimes with a rate of **3.81** cyber crimes per 1 lakh population.
+
+Now, it is evident from that the states of Assam and Telangana are showing rapid increasing trend in Cyber Crimes in last 5 years. However, U.P. and Karnataka are registering some lesser number of cases as compared to previous years.     
 
 ## Cyber Crimes U.T. - wise
 
-Further, Similar things can be analyzed for the Union Territories also.
 
-```{r}
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 barut2020_21
 ```
 
 
-In terms of numbers, the Union Territory of Delhi registered the most 356 cyber crime cases in 2021, followed by Jammu&Kashmir and Chandigarh with 154 ans 15 cases respectively. Also, **the cases in Delhi are more than double in 2021 from 2020.** However, in terms of rates, the picture is somewhat like this in all the Union Territories: 
+In terms of numbers, the Union Territory of Delhi registered the most 356 cyber crime cases in 2021. Also, **the cases in Delhi are more than double in 2021 from 2020.** 
 
-```{r}
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 barut2020_21r
 ```
 
+\textbf{\underline{The Status of Chandigarh} }
 
-## Cyber Crime Trend India
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+trendchd
+trendchdrate
+```
 
-```{r}
+It seems that the Union Territory of Chandigarh has shown a good improvement as far as the cyber crimes in numbers are concerned. Also, the rate is declining in the past few years and in 2021 it was **1.24** cyber crimes per 1 lakh population. All time high was **2.56** cyber crimes per 1 lakh population in 2018.
+
+## Cyber Crime Trend and Forecast - India
+
+The number of cyber crimes registered in India during the past 20 years are given by the following plot:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 source("cybertrend.R")
 cyber_trend
 ```
 
-```{r}
+Now, the above plot shows the Trend for the number of Total Cyber Crimes registered in overall India from the year 2002 - 2021.
+
+Now, it is evident from the plot, that India registered more than **4 times** cyber crimes in 2021 as compared to 2016.
+
+Also, in a span of an year, India registered **1.5 times** more Cyber Crime cases in 2018 from 2017. And if we see 2018 from 2016, then the registration of the cases is **just above double**.
+
+Also, one may note that initially, from the years 2002 - 2009, the cases registered were much much lower due to the fact that the internet was not that cheaply and easily accessible for the people of India.    
+But from the year 2016 to 2017, the cyber-crimes were **almost doubled** due to the fact that in this year the Telecom sector in India experienced drastic changes with the entry of Jio in the Telecom Market. To tackle with their business strategies, other telecom networks reduced the data charges to a huge extent, leading to a very large increase in the internet accessibility among the Indian Population. 
+
+
+**Secular Trend**       
+
+Secular Trend means the smooth, regular, long-term movement of the series, if observed long enough. Some series exhibit an upward or a downward trend or may remain more or less at a constant level. Sudden or frequent changes are incompatible with the idea of trend. It is a general systematic gradual change over time. It may be linear or non-linear. A Secular trend might change its direction from an increasing trend to a decreasing trend and vice-versa.    
+In order to measure the trend, we have to eliminate from the time series the other three
+components viz. seasonal, cyclical and irregular fluctuations. For example, if the period of
+seasonal fluctuation be a year, then the yearly totals or yearly averages will be free from the
+seasonal effect.    
+To eliminate the other two components viz. cyclical and irregular, one may consider the following methods:        
+
+• Method of freehand curve fitting      
+• Method of Semi Averages       
+• Method of Mathematical Curve fitting             
+• Moving Average Method         
+• Group Average Method.         
+
+**Method of Mathematical Curve fitting for determination of Trend**       
+
+This is perhaps the best and most objective method of determining trend. In this case, an
+appropriate type of trend equation is selected at first and then the constants involved in the
+equation are estimated on the basis of the data in hand.
+A Mathematical relationship is established between the response trend and the equi-spaced time points. 
+Here, we have used the Method of Mathematical Curve fitting, which is more reliable and enable us to obtain trend values for all the given time periods.
+
+***Model Selection:*** In this study, by the visual inspection of the trend from the dataset, it seems that the trend follows some exponential type of  pattern.
+
+***Estimating Parameters of the Model:*** Estimating the parameters of the model using different estimation methods, such as maximum likelihood estimation or least squares estimation. The estimated parameters are the values with the best fit, minimizing the discrepancy between the model predictions and the observed data. In this study, the least square method of estimation is being implemented in R.
+
+***Goodness of Fit of the Model:*** Assessing the goodness-of-fit is the process of determining how well the fitted model fits the data. Various methods to examine the goodness of fit of a model include computing Multiple R Squared and Adjusted R Squared, Residual Analysis, Visualizing Residual plots and normality characteristics of residuals etc. If the fit is good, the model has done a good job of capturing the patterns and variability in the data.
+
+***Model Validation:*** It is the process of determining whether the fitted model is valid by evaluating how well it performs on independent or holdout data. This procedure aids in determining whether the model's performance endures beyond the data used for fitting.
+Any given data set can be fitted with a wide variety of models, but the best one is the one that passes the goodness of fit test. 
+
+***Forecasting:*** The main objective of a model is to control the present and predict the future. Forecasting is one of the major characteristic of any Model. Qualitative Techniques, Time series analysis and Projection are some of the basic types of forecasting. In this study, the forecasts are made for the Cyber Crimes and Cyber Crime Rates of India.       
+The exponential models, for which all the parameters and other helpful statistics are provided below, are the best fitted ones out of all the models that we tried to fit in "R" for the given data set.
+
+\textbf{\underline{Cyber Crimes Prediction} }
+
+The cyber crime  prediction for the coming years can be done using the following fitted model:
+
+$$\log(Y_t) = 4.99265  + 0.29710  \ t$$
+or
+$$Y_t = \exp(4.99265 + 0.29710  \ t)$$
+where:      
+t $\geq$ 1        
+$Y_t$ : Predicted Cyber Crimes in India for the year $(2001 + t)$
+
+**Model Summary**
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+summary(model5)
+```
+**Model Inferences**
+
+- ***P Value*** = $1.856 \times 10^{-11}$, much less than the level of significance, which means the coefficients of the model are highly significant.         
+- ***F-Statistic of ANOVA*** = 215.4, which is infact very high. It also indiactes the high significance of the model coefficients and can be compared with the critical values.       
+- ***Multiple R-Square*** = 0.9229 & ***Adjusted R Square*** = 0.9186, which are close to 1 and do not differ from each other. These values indicate a good fit of the model.       
+Clearly, from the summary of the model, it is evident that the values of $R^2$ and Adjusted $R^2$ do not differ much. Here t denotes the time index. t = 1 corresponds to the year 2002, upto so on t = 20 for the year 2021. The parameter estimates are coming out to be highly significant.
+
+
+**Model Plot**   
+
+In this plot the estimated curve along with the actual values is plotted against the time points. For the good fit of a model, the curve must pass closer to the actual values.       
+The plot of the fitted curve along with the actual values as dots is shown below:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+fitplot2
+```
+
+***Future Prediction***
+
+The Cyber Crimes predicted for the coming years using the above model are:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+library(gt)
+gt(creg.prediction)
+```
+
+These values indicate that the cyber crimes in India are expected to increase rapidly in the coming future and shall become almost double as compared to 2019-2021.
+
+**Testing Normality of Residuals**
+
+The residuals from this model are given by 
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+resid(model5)
+```
+
+In most of the Econometric and Time series models, it is assumed that the errors are iid and Normally distributed with zero mean and some constant variance , i.e. $N(0, \sigma^2 I)$. Residuals are considered to be the estimates of the errors. Therefore, it is good to test whether these estimates of the errors possess the desired characteristics of normality.         
+
+Normality of residuals means that they are distributed symmetrically around zero, with no skewness or kurtosis. This assumption implies that the model captures the main patterns and sources of variation in the data, and that the errors are random and independent.
+
+$H_0$: The residuals are normally distributed.        
+$H_1$: The residuals are not normally distributed.        
+
+
+***QQ Plot***
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+crimeres
+```
+
+Clearly, it is evident from the above plot that the quantiles are nearly lying on the straight line, known as the QQ line, which indicates the presence of normality in the residuals.
+***Shapiro-Wilk Normality Test***
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+shapiro.test(ress$crimes)
+```
+
+Here, the p-value $> >$ 0.01. It means we fail to reject the null hypothesis of Normality. Hence it can be concluded that the residuals are normally distributed, with 99 % confidence.
+
+***Kolmogorov Smirnov Goodness of fit Test***
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+ks.test(ress$crimes, y = "pnorm" )
+```
+
+Again, from the Kolmogorov Smirnov Test as well, we conclude that the residuals are normality distributed. 
+
+***Anderson Darling Test***
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+library(nortest)
+ad.test(ress$crimes)
+```
+
+Also, using Anderson Darling Test, the p-value is much greater than the level of significance. It indicates that the residuals are in fact normally distributed.
+
+\textbf{\underline{Cyber Crime Rate Prediction} }
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 cyber_trendr
 ```
 
+So  far we analyzed the cyber crimes trend in India. Further, it is of interest to do the same for the Cyber Crime Rates as well. 
+It is a fact that the population of India also varied in these years. For that matter, we can observe the Cyber Crime Registration Rate of India from 2002 - 2021 as shown in the above figure.
+
+The cyber crime rate prediction for the coming years can be done using the following fitted model:
+
+$$\log(Y_t) = -4.26073 + 0.28345 \ t$$
+or
+$$Y_t = \exp(-4.26073 + 0.28345 \ t)$$
+where:      
+t $\geq$ 1        
+$Y_t$ : Predicted Cyber Crime Rate in India for the year $(2001 + t)$
+
+**Model Summary**
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+summary(model4)
+```
+
+**Model Inferences**    
+
+- ***P Value*** = $4.475 \times 10^{-11}$, much less than the level of significance, which means the coefficients of the model are highly significant. The signif. codes "***" also indicate that the model coefficients  are highly significant. 
+
+- ***F-Statistic of ANOVA*** = 193.7, which is infact very high. It also indicates the high significance of the model coefficients and can be compared with the critical values.   
+
+- ***Multiple R-Squared*** = 0.915 & ***Adjusted R Squared*** = 0.9103, which are close to 1 and do not differ from each other. These values indicate a good fit of the model.  
+
+Clearly, from the summary of the model, it is evident that the values of $R^2$ and Adjusted $R^2$ do not differ much. Here t denotes the time index. t = 1 corresponds to the year 2002, upto so on t = 20 for the year 2021. The parameter estimates are coming out to be highly significant.
+
+**Model Plot**   
+
+- Years are taken along the horizontal axis and the Cyber Crime Rates are taken along the vertical axis.  
+
+- The estimated curve from the model is plotted for the Cyber Crime Rates and along with that the actual values of the rates during the corresponding years are also plotted and represented by dots in the following plot.
+
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+fitplot
+```
+
+***Future Prediction***
+
+The Cyber Crime Rates predicted for the coming years using the above model are:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+library(gt)
+gt(rate.prediction)
+```
+
+Hence, from the predicted values from the model, the cyber crime rate in India is expected to increase rapidly and the forecast say that India will surpass almost above 50 cyber crimes per 1 lakh population.
+
+**Testing Normality of Residuals**
+
+The residuals from this model are given by 
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+resid(model4)
+```
+
+
+$H_0$: The residuals are normally distributed.        
+$H_1$: The residuals are not normally distributed.        
+
+***QQ plot***
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rateres
+```
+
+Clearly, it is evident from the above plot that the quantiles are nearly lying on the qq line, which indicates the presence of normality in the residuals. But one can use some objective criteria to test the normality as follows:
+
+***Shapiro-Wilk Normality Test***
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+shapiro.test(ress$rate)
+```
+
+Here, the p-value $> >$ 0.01. It means we fail to reject the null hypothesis of Normality. Hence it can be concluded that the residuals are normally distributed, with 99 % confidence.
+
+***Kolmogorov Smirnov Goodness of fit Test***
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+ks.test(ress$rate, y = "pnorm" )
+```
+
+Again, from the Kolmogorov Smirnov Test as well, we conclude that the residuals are normality distributed. 
+
+
+***Anderson Darling Test***
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+library(nortest)
+ad.test(ress$rate)
+```
+
+Also, using Anderson Darling Test, the p-value is much greater than the level of significance. It indicates that the residuals are in fact normally distributed.
+
+\textbf{\underline{Percentage Increase Trend} }
+
 To get a more clear idea about the previous year comparison, percentage increase in the cases can be calculated using the formula:   
 
-$$ Percentage \ Increase =  \frac{Current \ Value - Previous \ Value}{Previous \ value} *100$$
-```{r, warning = FALSE}
+
+$$ \text{Percentage Increase} =  \frac{\text{Current Value - Previous Value}}{\text{Previous value}} *100$$
+
+
+From the Percentage Increase plot, following facts can be noted:
+
+- India registered 5.87% more cyber-crimes in 2020 as compared to 2021.       
+- It must be noted that the any dip in the graph does not mean decrease in the crimes, rather it means that there is less percentage increase in the cases as compared to previous year. However, any point below zero i.e., negative percentage increase indicates that there are lesser number of cases from the previous year.    
+- It can be noted that the negative values for the years 2003, 2004, 2006, 2008
+indicate that the cyber-crimes have declined in these years as compared to the
+previous year.
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
 cyber_trendp
 ```
 
+**Internet user-base of India**
+
+Besides these cyber-crime incidents and trend analysis, one should also have a look on the active internet users in India over the years. Data of active internet users in the country is taken from the International Telecommunication Union Database (2021) and visualized as follows:      
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+net_usep
+```
+
+It can be seen that the percentage of internet users in the country has increased in the last few years. 43% population of India had access to the internet by the year 2020. According to a report by IAMAI and data analytics firm Kantar (2023), it was estimated that in 2025, number of active internet users would surpass 900 million in the country. In fact, India was ranked as the second largest online market worldwide in 2019, coming second only to China. The number of internet users was estimated to increase in both urban as well as rural regions, indicating a dynamic growth in access to internet.
+
+
+# Cyber Crime Motives
+
+
+## Introduction
+
+In this section, the motives behind the emerging cyber crime incidents in India are analyzed. Major motive is figured out and states are futher analyzed for that for the past few years. Cluster Analysis Technique is used to divide states into two groups (clusters) based on their crime incidence for the major motive keeping mid year projected population under consideration.          
+
+
+## Cyber Crime Motives Year Wise
+
+**Year 2020**
+
+```{r, warning=FALSE,echo=FALSE, message=FALSE}
+source("cybermotives.R")
+motives2020
+```
+
+***Major Motive***
+
+It is evident from the above figure that the **Fraud** as emerged as the major motive for cyber crimes in India during the year 2020. Note that **60.24 %** of cyber crimes registered in India were found to be with the motive of fraud. 
+
+**Year 2021**
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+motives2021
+```
+
+Again in the next consecutive year 2021, the picture is almost similar. Again it can be seen that Fraud emerges as the major cyber crime motive in India during 2021 as well, contributing to **60.84 %** of the total cyber crimes in the country.
+
+**Key Points:**   
+
+- As far as the motives behind cyber crimes in India are concerned, Fraud is the major motive. The country recorded more than 32 thousand cases of cyber crime motivated by fraudulent behavior that year.   
+- The other motive come second in the ranking, as labeled by the National Crime Records Bureau.    
+- Further, it may be noted that Sexual Exploitation, Extortion and Personal Revenge are the other prevalent motives behind cyber crimes in India.
+
+## Cluster Analysis
+
+Cluster Analysis is an Exploratory Data Analysis Technique to group heterogeneous objects (multi-dimensional) into homogeneous groups.        
+The two well-known methods of Cluster Analysis are:       
+1. Hierarchical Cluster Analysis    
+2. Non-Hierarchical Cluster Analysis        
+
+Since, fraud is the major motive behind the cyber crimes in India. Hence, it is of interest to further analyze it among the states for the past few years.
+
+For the fraud cases, different states of India are divided or grouped into clusters based on the fraction of fraud in the total cyber crimes in these states for the years 2017 to 2021.
+
+States are divided into clusters using:       
+- K-Means Clustering (Non-Hierarchical)              
+- Agglomerative Cluster Analysis (Hierarchical)       
+- Divisive Cluster Analysis (Hierarchical)        
+
+
+### Distance Matrix Calculations
+
+Data has been scaled to centre 0, and unit variability of each year rate (Variables).
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+source("clusterana.R")
+dist[1:3, 1:3]
+```
+
+This is some part of the 28x28 distance matrix of states.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+# displot
+```
+
+### K-Means Clustering (Non-Hierarchical)
+
+***Optimal Number of Clusters:***
+
+- To determine the optimum number of clusters, consider the following plot of number of
+clusters v/s Total within sum of squares.   
+- Within Cluster Sum of Squares must be as minimum as possible. So accordingly the
+optimum number of clusters are to be chosen.        
+- From the following plot the optimum number of clusters is chosen as that value of k, where
+the value of Within Cluster Sum of Squares starts flattening down.
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+wssplot
+```
+
+The Total within sum of squares starts flattening after **k = 2**, so We proceed with **K-Means clustering** with 2 clusters.
+
+**Cluster 1**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+names(km.res$cluster[km.res$cluster == 1])
+```
+
+***Mean Vector***
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+km.c1mean
+```
+
+**Cluster 2**
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+names(km.res$cluster[km.res$cluster == 2])
+```
+
+***Mean Vector***
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+km.c2mean
+```
+
+This is the required clustering of 28 states into 2 clusters.
+
+Define $$ Z_{ji} = 1, \qquad if \ \bf{X_i} \in \ jth \ cluster $$
+
+and $$ Z_{ji} = 0, \qquad if \ \bf{X_i} \notin \ jth \ cluster $$
+
+where $\bf{X_i}$ is the ith case vector. i = 1,2,...   N.    
+
+Let $\bf{m_j}$ be the mean vector of jth cluster, and $\bf{m}$ be the grand mean.
+
+Let $n_j$ be the number of elements in the jth cluster.
+
+The Within cluster sum of squares vector are given by: 
+
+
+$$WSSV = diag(S_W)$$
+
+where 
+
+$$S_W = \frac{1}{N}   \sum_{j=1}^{g} \sum_{i = 1}^{N} Z_{ji} \bf{(X_i - m_j)(X_i - m_j)'} $$
+
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$withinss
+```
+
+The Total Within cluster sum of squares are given by:
+
+$$WSS = trace(S_W)$$ where $$S_W = \frac{1}{N}   \sum_{j=1}^{g} \sum_{i = 1}^{N} Z_{ji} \bf{(X_i - m_j)(X_i - m_j)'} $$
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$tot.withinss
+```
+
+and Between Cluster Sum of Squares are:
+
+$$BSS = trace(B_W)$$ where $$B_W = \frac{1}{N}   \sum_{j=1}^{g}  n_j \bf{(m_j - m)(m_j - m)'} $$
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$betweenss
+```
+
+The Total cluster sum of squares are given by:
+$$TSS = WSS + BSS$$
+
+$\frac{WSS}{TSS}$ must be small. 
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+km.res$tot.withinss/km.res$totss
+```
+
+
+To have a better picture of the clusters, a look on the cluster plot will be helpful:
+
+#### Cluster Plot
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+clusplot
+```
+
+1. As it is evident from the above cluster plot that the states with fewer fraud Cyber Crimes : Arunachal Pradesh and Nagaland are in one cluster.        
+
+2. However the states with extensive fraud rates: Karnataka, Bihar,Telangana, Jharkhand,Uttar Pradesh, Maharashtra etc. are in other cluster.
+ 
+### Hierarchical Clustering
+
+#### Agglomerative Clustering
+
+Also, under the Hierarchical Clustering, using **Agglomerative  Custering** with *Ward D2 Linkage*, the states are more likely to be divided into 2 clusters.
+
+The states with major fraction of the Fraud cases are in one cluster: Telangana, Jharkhand, Bihar etc.
+
+However, the states with comparatively lesser number of frauds are in the other cluster.
+
+The cluster means are given by
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+cameans1 # 1st cluster mean
+cameans2 # 2nd Cluster mean
+
+```
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+aglodend
+aglocp
+```
+
+Previously, for better demarcation, we applied K-Means clustering for 4 clusters. However, under the Hierarchical Clustering, using **Agglomerative  Clustering** with *Ward D2 Linkage*, the states are more likely to be divided into 2 clusters.
+
+#### Divisive Clustering
+
+Divisive method operates by successive splitting of groups.
+The steps involved are as follows:        
+
+- Algorithm initially starts with a single group (cluster) with all the cases.    
+
+- This cluster is then divided into two clusters such that the objects in one subgroup are as far as possible from the objects in the other subgroup.    
+
+- This process continues till there are N groups, each with a single object.
+
+If **Divisive Clustering** is applied, the two main clusters so formed are given as follows:
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+dianadend
+```
+
+**Summary**
+
+Using all the three techniques, the number of clusters formed = 2. The cluster assignments
+by Agglomerative and Divisive techniques are almost the same as that of K-Means
+Clustering except the following:   
+
+- The state of Rajasthan goes to the Cluster 2 using Agglomerative and Divisive
+techniques.       
+
+- The state of Uttar Pradesh goes to the Cluster 2 using Divisive technique.
+
+
+
+
+# Analysis of Cyber crimes under IT Act and IPC Act  
+
+
+## Introduction
+
+### Information Technology ACT, 2000
+
+The IT Act was introduced in 17 October 2000. It is the primary law in India dealing with cyber crime and electronic commerce. The original Act contained 94 sections, divided into 13 chapters and 4 schedules. The laws apply to the whole of India. If a crime involves a computer or network located in India, persons of other nationalities can also be indicted under the law. The sections of IT Act included in the analysis are:        
+• Tampering Computer Source Documents (Section 65)						
+• Computer Related Offenses (Sec 66 & Sec 66 B to E)(Total)						
+• Cyber Terrorism (Section 66F)						
+• Publication/ transmission of obscene / sexually explicit act in electronic form 				
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+rm(list = ls())
+library(readxl)
+data1 = read_excel("fig_data.xlsx")
+data1$Year = as.character(data1$Year)
+library(ggplot2)
+library(ggthemes)
+library(gt)
+library(dplyr)
+```
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig31 = ggplot(data1, aes(Year ,Rate,fill=Offense))+
+  geom_bar(stat="identity",position=  'dodge')+
+  labs(title= "Rates: Section-Wise yearly IT-Act Cases",
+       caption = "Figure: 3.1",
+       cex.labs = 0.5)+theme_clean()+theme(legend.position="bottom")
+fig31
+```
+
+*Abbreviations Used :*
+
+TCSD: Tampering Computer Source Documents (Section 65)               
+CRO: Computer Related Offenses (Sec 66 & Sec 66 B to E)(TOTAL)                    
+CTR: Cyber Terrorism (Section 66F)                
+PTE: Publication/ transmission of obscene / sexually explicit act in electronic form                       
+
+
+
+#### Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+This includes punishment regarding sending offensive messages through communication service,punishment for dishonestly receiving stolen computer resource or communication, punishment for identity theft, punishment for cheating by personation by using computer resource, Punishment for violation of privacy, penalty and compensation for damage to computer, computer system, etc.
+
+
+### Indian Penal Code , 1862
+
+The Indian Penal Code (IPC) is the official criminal code of India. It is a comprehensive code intended to cover all substantive aspects of criminal law. It came into force in India during the British rule in 1862. 
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data2 = read_excel("fig_data.xlsx", sheet = "Sheet2")
+data2$Year = as.character(data2$Year)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig32 = ggplot(data2, aes(Year ,Rate,fill=Offense))+
+  geom_bar(stat="identity",position=  'dodge')+
+  labs(title= "Rates: Section-Wise Yearly IPC-Act Cases",
+       caption = "Figure: 3.2",
+       cex.labs = 0.5)+theme_clean()+theme(legend.position="bottom")+guides(col = guide_legend(nrow=4, byrow=TRUE))
+fig32
+```
+
+*Sections of the Offenses under IPC included in this analysis:*
+
+Data theft (Sec.379 to 381)       
+Fraud (Sec.420 r/w Sec.465,468-471 IPC)       
+Cheating (Sec.420)        
+Forgery (Sec.465, 468 & 471)        
+
+
+The figure 3.2 shows the rate of cases of Indian Penal Code (here only those sections are included which include punishments to cyber-crimes ) being registered in India per 1 lakh population in years 2016-21. One must note that the Fraud cases are reported mostly.
+
+#### Fraud (Sec.420 r/w Sec.465,468-471 IPC)	
+
+This include that whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment and shall also be liable to fine.
+
+
+## Percentage share of major crimes under IT Act and IPC
+
+```{r, echo=FALSE,warning =FALSE, message=FALSE}
+
+library(readxl)
+d<-read_excel("dataset.xlsx", sheet = "Sheet4")
+yr<-d[[1]]
+cro<-d[[3]]
+fr<-d[[8]]
+t<-d[[15]]
+
+pshare = function(x,y){
+per_sh = c()
+for (i in 1:length(x)) {
+per_sh[i] = (x[i]/y[i]) 
+}
+return(100*per_sh)
+}
+gt(as.data.frame( cbind(Year=yr,CRO=cro,Total=t, Percentage_Share = round(pshare(cro,t),4))) )
+gt(as.data.frame( cbind(Year=yr,Fraud=fr,Total=t, Percentage_Share = round(pshare(fr,t),4)) ) )
+
+```
+
+The above data table shows that Computer Related Offenses (Sec 66 & Sec 66 B to E) ,( here , Computer Related Offenses (Sec 66 & Sec 66 B to E) is named CRO ) , has been contributing about 48% and Fraud contribute about 15% of the total cyber crimes each year  as per the NCRB data for cyber crimes from year 2016 - 2021. Hence Computer Related Offenses (Sec 66 & Sec 66 B to E) is the major contributor to the cyber crimes in India.
+
+
+## Randomness and Association
+
+### 1-sample Run test for randomness
+
+1-sample run test is used to test whether the observations are random
+
+#### Computer related offenses (Sec 66 & Sec 66 B to E) 
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+cro_c<-d[[22]]
+library(DescTools)
+RunsTest(cro_c)
+```
+
+This shows that year wise incidence of cases of Computer related offenses are random .
+
+#### Fraud
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+fr_c <- d[[23]]
+RunsTest(fr_c)
+```
+
+This shows that year wise incidence of cases of Fraud are random .
+
+### Kolmogorov Smirnov test
+
+This test is used for testing whether both the samples come from same distribution
+
+Test statistics,
+
+$$D_{n,m} = \sup_{x} |F_{1,n}(x) - F_{2,m}(x) |$$
+
+where $F_{1,n}$ and $F_{2,m}$ are the empirical distribution functions of the first and the second sample respectively, and *sup* is the supremum function.
+
+```{r, echo = FALSE, warning= FALSE, message=FALSE}
+
+data<-read_excel("levene.xlsx", sheet = "Sheet5")
+y2016 <- data[[5]]
+y2017 <- data[[6]]
+y2018 <- data[[7]]
+y2019 <- data[[8]]
+y2020 <- data[[9]]
+y2021 <- data[[10]]
+
+ks.test(y2016,y2021)
+ks.test(y2017,y2021)
+ks.test(y2018,y2021)
+ks.test(y2019,y2021)
+ks.test(y2020,y2021)
+
+```
+
+This shows that the distribution of computer related offenses throughout the states remains the same in the years 2016 - 2021 i.e. cases are concentrated in specific states and are distributed similarly each year.
+
+
+### Kendall Tau Measure of Association
+
+It is a non-parametric measure based on ranks of the data.
+
+$H_0$: There is no significant association between the variables.
+$H_1$: There is significant association between the variables.
+
+Test Statistic
+
+$$ \tau = \frac{C-D}{C+D} $$
+where C = number of concordant pairs.     
+and D = number of discordant pairs.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+cor.test(cro_c,fr_c,method="kendall")
+```
+
+This shows that there is no association between cyber crimes under Computer Related Offenses (Sec 66 & Sec 66 B to E) and Fraud.
+
+
+## Testing variability and location
+
+Now, checking for variability w.r.t location and scale for Computer Related Offenses (Sec 66 & Sec 66 B to E) in years 2016-21 using Levene's Test for variability and Kruskal Wallis Test for location.
+
+### Levene Test for the equality of variances.
+
+Let $\sigma_{i}^2$ denote the variance of the ith population, i = 1,2, ...  , k.  
+$H_0$: $\sigma_{1}^2 = \sigma_{2}^2 = \ ... \ = \sigma_{k}^2$     
+$H_1$: Atleast one pair of $\sigma^2$'s differ.       
+
+Test Statistic
+$$W = \frac{(N-k)} {(k-1)}.
+               \frac{\sum_{i=1}^{k}N_{i}(\bar{Z}_{i.}-\bar{Z}_{..})^{2} }
+               {\sum_{i=1}^{k}\sum_{j=1}^{N_i}(Z_{ij}-\bar{Z}_{i.})^{2} }$$
+
+
+where,
+k: number of different groups to which the sampled cases belong.            
+$N_{i}$: Number of elements in different groups.        
+N: total number of cases in all groups            
+
+
+Here, $Z_{ij}$ can have one of the following three definitions:
+
+1. $Z_{ij} = |Y_{ij} − \bar{Y_{i.}}|$ , where $\bar{Y_i}$. is the mean of the i-th subgroup.
+
+2. $Z_{ij} = |Y_{ij} − \tilde{Y_i.}|$
+where $\tilde{Y_{i.}}$ is the median of the i-th subgroup.
+
+3. $Z_{ij} = |Y_{ij} − \tilde{Y_i.}'|$
+where $\tilde{Y_{i.}'}$ is the trimmed mean of the i-th subgroup.
+
+
+$\bar{Z_{i.}}$ are the group means of the $Z_{ij}$ and $\bar{Z}..$ is the overall mean of the $Z_{ij}$.
+
+and, $Y_{ij}$ denote the value of jth case and ith group.
+
+Test is to reject null hypothesis for larger values of W.
+
+```{r, echo=FALSE,warning =FALSE, message=FALSE}
+library(car)
+
+#Test for Variability
+leveneTest(cases~as.factor(year), data[-1])
+
+```
+
+Since p-value > 0.05 , for Levene's test, we fail to reject null hypothesis. Therefore there is no significant variability in the data through 2016-21.
+
+
+### Kruskal Wallis Test
+
+Now testing for equality in location using Kruskal Wallis Test:
+
+Let $\theta_{i}$ denote the location of the ith population, i = 1,2,3, ... , k.
+
+$H_0$: $\theta_{1} = \theta_{2} = \ ... \  =  \theta_{k}$          
+$H_1$: At least one pair of $\theta$' s differ.       
+
+Test Statistic
+
+$$H = \frac{12}{N(N+1)} \sum_{i = 1}^{k} \frac{R_i^2}{n_i} - 3(N+1) $$
+
+where $R_i$ = Sum of Ranks of the ith sample.       
+$n_i$ = size of the ith sample. 
+
+$N = \sum_{i = 1}^{k} n_i$             
+
+Test is to reject $H_0$ for large values of H.
+
+```{r, echo=FALSE,warning =FALSE, message=FALSE}
+kruskal.test(cases~as.factor(year), data[-1])
+```
+
+Since p-value > 0.05 , for Kruskal Wallis test, we fail to reject $H_0$. There is no significant change in the sense of location of the Computer Related Offenses (Sec 66 & Sec 66 B to E) throughout the years 2016-21.
+
+## Computer Related Offenses (Sec 66 & Sec 66 B to E): State - Wise
+
+### Cyber Crimes in Numbers: State Wise 
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data3 = read_excel("fig_data.xlsx", sheet = "Sheet3")
+data3$Year = as.character(data3$Year)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig33 = ggplot(data3, aes(State ,Cyber.Crimes ,fill= Year))+
+  geom_bar(stat="identity",position=  'dodge')+theme_clean() +theme(axis.text.x = element_text(angle = 90, size = 8))+
+  labs(title= "Computer Related Offenses: State-Wise",
+       caption = "Figure: 3.3",
+       cex.labs = 0.5)+theme(legend.position="right")
+fig33
+```
+
+
+The figure 3.3 shows the highest number of cases being registered in Karnataka, followed by Uttar Pradesh and Assam. But one must note that the population in these states may vary. So to get a better comparison, rates can be calculated, which gives the cyber-crime cases registered in the state per 1 lakh population. Mid-year projected population for each state for the year 2016 - 2021 is available. Hence the Crime Rate can be calculated.
+
+$$\text{Rate} = \frac{\text{No.of cases registered} }{\text{Mid year projected population (in lakhs)} }$$
+
+### Crime Rate in each state: Computer Related Offenses
+
+Apart from the actual count of the Computer Related Offenses in each state, one can also have a look at the number of computer related offenses per 1 lakh population in these states. For that matter, the following plot, Figure 3.4 of Crime Rates is given:
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data4 = read_excel("fig_data.xlsx", sheet = "Sheet4")
+data4$Year = as.character(data4$Year)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig34 = ggplot(data4, aes(State ,Rates ,fill= Year))+
+  geom_bar(stat="identity",position=  'dodge')+theme_clean() +theme(axis.text.x = element_text(angle = 90, size = 8))+
+  labs(title= "Computer Related Offense Rates: State-Wise",
+       caption = "Figure: 3.4",
+       cex.labs = 0.5)+theme(legend.position="right")
+fig34
+```
+
+***Interpretation***
+
+- The state of Karnataka emerged with the highest crime rates of Computer Related Offenses (CRO) in the past few years. The Crime Rate of CRO in Karnataka is **continuously above 10** in the past few years, and it has passed **the mark of 15** during 2019.
+
+- The states of Assam, Uttarakhand, Meghalaya, Jharkhand and Telangana are having the CRO rate in the bracket of 3 - 5 cases per 1 lakh population.
+
+- One must note that the Uttarakhand had observed a peak in year 2021, where the rate suddenly surpass 5 in this year, which is a matter of concern.
+
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+data5 = read_excel("fig_data.xlsx", sheet = "Sheet5")
+data5$Year = as.character(data5$Year)
+```
+
+```{r, warning=FALSE, echo=FALSE, message=FALSE}
+fig35 = ggplot(data5, aes(x=Year, y=Rate, group=1)) +
+  geom_line(color = "#0b1d78")+
+  geom_point()+theme_clean()+labs(title= "Computer Related Offense Rates: Karnataka",
+       caption = "Figure: 3.5",
+       cex.labs = 0.5)
+fig35
+```
+
+  
+The pattern of crime per 1 Lakh population in respective year in Karnataka can be seen in figure 3.5.The crime rate as well as counts of cyber crimes in Karnataka is surprisingly high.
+
+### Year wise increment of Computer Related Offenses (Sec 66 & Sec 66 B to E)
+
+```{r, echo=FALSE, warning =FALSE, message=FALSE}
+pinc = function(x){
+per_inc = c()
+for (i in 2:length(x)) {
+per_inc[i] = x[i]/x[i-1] - 1
+}
+return(100*per_inc)
+}
+
+perc123 = as.data.frame(cbind(Year=yr, CRO=cro, Percentage_Increase = round(pinc(cro),4)))
+perc1234 = gt(perc123)
+perc1234
+```
+
+The above data table shows the Computer Related Offenses got a peak in year 2019 when they increased by **65 %** as compared to previous year 2018. However a slight % decrease can be seen after that .
+
+
+
+
+# Police Disposal of Cyber Crimes in India
+
+
+## Introduction
+
+kkk
+
+
+\newpage
+
+ll
+
+
+## Statistics and Data Visualization 
+
+### Total Cases Investigated
+
+\newpage
+
+dd
+
+
+\newpage
+
+### Total Cases Disposed
+
+
+ddd
+
+
+
+\newpage
+
+xxx
+
+
+
+
+### Total Cases Pending
+
+xxx
+
+
+\newpage
+
+
+xx
+
+
+\newpage
+
+
+xxx
+
+
+
+\newpage
+
+
+xxx
+
+
+\newpage
+
+
+xx
+
+
+
+\newpage
+
+
+
+xx
+x
+
+
+
+## Testing location (Crime Head-wise)
+
+
+dds
+
+
+\newpage
+
+
+
+sdd
+
+
+### Testing variability and location (state-wise)
+
+
+dsd
+
+\newpage
+
+
+ds
+
+
+\newpage
+
+
+
+dse
+
+
+
+### Paired Wilcoxon Signed-Rank test
+
+
+
+ddf
+
+
+\newpage
+
+
+dfd
+
+
+## Hierarchical Cluster Analysis
+
+
+
+dsf
+
+
+\newpage
+
+
+
+dds
+
+
+\newpage
+
+
+sdd
+
+
+\newpage
+
+swd
+
+
+# Court Disposal of Cyber Crime Cases
+
+
+
+
+## Introduction
+
+
+fff
+
+\newpage
+
+## Analysis of Court Disposal of Cyber Crime Cases (State/UT-wise)
+
+
+ghh
+
+
+### Total No. Cases in The Court
+
+
+\newpage
+
+
+dff
+
+\newpage
+
+
+fffd
+
+
+\newpage
+
+
+dfrd
+
+
+\newpage
+
+
+dffgr
+
+\newpage
+
+dsd
+
+
+\newpage
+
+
+
+
+fdd
+
+
+### Cases in Which Trial Were Completed
+
+fef
+
+
+\newpage
+
+
+dssd
+
+
+\newpage
+
+dsd
+
+
+\newpage
+
+
+### Conviction Rate
+
+
+ddd
+
+
+\newpage
+
+
+dwd
+
+
+\newpage
+
+
+ded
+
+### Cases Pending Trial at End of the Year
+
+
+dsde
+
+
+\newpage
+
+edd
+
+
+
+\newpage
+
+
+eded
+
+
+### Pendency Rate
+
+dfe
+
+
+\newpage
+
+
+ded
+
+
+\newpage
+
+
+deefd
+
+
+
+## Analysis of Court Disposal of Cyber Crime Cases (Crime Head-wise)
+
+ssd
+
+
+\newpage
+
+
+wesw
+
+
+
+### Pie-charts
+
+
+dwd
+
+
+\newpage
+
+ed3
+
+
+### Analysis for Offences Under I.T. Act
+
+
+33
+
+
+\newpage
+
+
+33213
+
+\newpage
+
+
+1swd
+
+
+\newpage
+
+
+eewe
+
+\newpage
+
+
+ewewe
+
+
+
+### Analysis for Offences Under IPC
+
+
+
+wdw
+
+\newpage
+
+wswd
+
+\newpage
+
+
+wswd
+
+\newpage
+
+
+wded
+
+
+
+\newpage
+
+
+wde
+
+
+
+
+### Analysis for Offenses Under SLL
+
+
+
+wdw
+
+\newpage
+
+wswd
+
+\newpage
+
+
+wswd
+
+\newpage
+
+
+wded
+
+
+
+\newpage
+
+
+wde
+
+
+
+### Predicted Offences for 2022: Percentage Contribution and Comparison
+
+
+
+## Gist of The Analysis
+
+
+
+sdewd
+
+
+\newpage
+
+
+sds
+
+
+## Remedies
+
+
+
+qwqs
+
+
+\newpage
+
+wsws
+
+## Conclusion
+
+
+sws
+
+
+
+# Disposal of Persons Arrested Under Cyber Crime
+
+
+## Disposal of Persons Arrested under Cyber Crimes (State Wise)
+
+as
+
+
+\newpage
+
+
+a
+
+
+
+## Analysis of Disposal of Cyber Crime (State-wise)
+
+
+### Persons Arrested
+
+
+dd
+
+
+\newpage
+
+dwd
+
+\newpage
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+### Persons Charge sheeted
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+### Persons Arrested Year-Wise In India
+
+
+dwd
+
+\newpage
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+### Persons Charge sheeted Year-wise In India
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+
+
+### Analysis for Relationship Between No. Of Persons Arrested and Charge sheeted
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+
+
+
+### Some Statistical Results Based on Persons Convicted, Discharged and Acquitted
+
+
+dwd
+
+\newpage
+
+sd
+
+
+
+## Disposal of Persons Arrested Under Cyber Crimes (Crime Head-wise)
+
+
+
+## Total Offences Under I.T. Act
+
+
+
+### Persons Arrested 
+
+
+dwd
+
+\newpage
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+### Persons Charge sheeted 
+
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+
+### Comparison Between People Arrested and People Charge sheeted
+
+
+
+dwd
+
+\newpage
+
+
+ww
+
+
+\newpage
+
+dwd
+
+\newpage
+
+sd
+
+
+
+
+### Persons Convicted Year-wise
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+### Persons Discharged Year-wise
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+
+### Persons Acquitted Year-wise
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+
+## Total Offences Under IPC
+
+
+sw
+
+\newpage
+
+
+de
+
+
+### Persons Arrested
+
+
+sw
+
+\newpage
+
+
+de
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+### Persons Charge sheeted
+
+
+sw
+
+\newpage
+
+
+de
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+
+### Comparison Between People Arrested and People Charge sheeted
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+sw
+
+\newpage
+
+
+de
+
+
+sw
+
+\newpage
+
+
+de
+
+
+### Persons Convicted Year-wise
+
+
+sw
+
+\newpage
+
+
+de
+
+
+### Persons Discharged Year-wise
+
+a
+
+
+### Persons Acquitted Year-wise
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+## Total Offences Under SLL
+
+qa
+
+### Persons Arrested
+
+
+sw
+
+\newpage
+
+
+de
+
+
+sw
+
+\newpage
+
+
+de
+
+
+### Persons Charge sheeted
+
+
+sw
+
+\newpage
+
+
+de
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+
+### Comparison Between People Arrested and People Charge sheeted
+
+
+sw
+
+\newpage
+
+
+de
+
+
+sw
+
+\newpage
+
+
+de
+
+
+sw
+
+\newpage
+
+
+de
+
+
+
+
+### Persons Convicted Year-wise
+
+sa
+
+
+### Persons Discharged Year-wise
+
+
+
+sw
+
+
+
+\newpage
+
+
+de
+
+
+
+### Persons Acquitted Year-wise
+
+
+sw
+
+
+
+\newpage
+
+
+de
+
+
+
+
+## Statistical Analysis of Total Number of Cases Obtained
+
+sw
+
+
+
+\newpage
+
+
+de
+sw
+
+
+
+\newpage
+
+
+de
+
+
+
+# Cyber Crimes against Women and Children
+
+
+## Introduction
+
+
+## Cyber Crimes against Children
+
+
+wdw
+
+
+\newpage
+
+
+sws
+
+### Runs Test for randomness
+
+
+### Kolmogorov-Smirnov Test
+
+
+wdw
+
+
+\newpage
+
+
+swswdw
+
+
+\newpage
+
+
+swswdw
+
+
+\newpage
+
+
+swswdw
+
+
+\newpage
+
+
+sws
+
+
+## Cyber Crimes against Women
+
+
+### Kolmogorov-Smirnov Test
+
+
+swswdw
+
+
+\newpage
+
+
+sws
+
+
+
+### Runs Test for randomness
+
+
+swswdw
+
+
+\newpage
+
+
+sws
+swswdw
+
+
+\newpage
+
+
+sws
+swswdw
+
+
+\newpage
+
+
+sws
+swswdw
+
+
+\newpage
+
+sss
+
+# Conclusion
 
 

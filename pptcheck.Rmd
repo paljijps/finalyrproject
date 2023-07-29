@@ -1,0 +1,378 @@
+---
+date: "July 10, 2023"
+author: "Jaswinderpal Singh"
+title: "Cyber Crimes in India: Trend and Future Prediction"
+output: 
+  officedown::rpptx_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.cap = TRUE)
+library(officedown)
+library(ggplot2)
+library(ggthemes)
+library(rvg)
+```
+
+## Cyber Crimes
+
+Cyber crimes are a new class of crimes rapidly increasing due to extensive use of Internet and I.T. enabled services.  Any criminal activity with the use of computers, networks, or the internet for the exploitation of data and resources comes under cyber crimes. Examples include hacking, identity theft, phishing scams, and distributing malware etc. Women are commonly targeted for cyber stalking, cyber pornography, impersonation etc. 
+
+
+## Objectives
+
+- To analyze the year-wise trend and future prediction of the number of cyber-crimes registered in India using the data from 2002 - 2021.         
+- State and U.T. - wise comparisons for the cyber-crimes incidence.         
+- Application of Non-Parametric tests to check similarity of distributions and randomness of cases, keeping the population variation of the states under consideration.            
+- To identify major cyber-crime motives in India.           
+- Dividing States into clusters based on their fraud cyber crimes in the years 2017-2021.    
+- To analyze of Police Disposal of cyber crimes and dividing statistically similar crime-heads into clusters.
+- To analyze how court matters involving cyber crime are handled and disposal of persons arrested.      
+- To figure out major cyber crimes against women and children.
+
+
+## Major Cyber Crimes in India
+
+1. *Hacking:* Unauthorized access to computer systems, networks, or websites to steal sensitive information or disrupt operations.        
+2. *Phishing:* Attempts to trick individuals into providing personal or financial information through fake emails or websites.    
+3. *Identity Theft:* Using someone else's personal information to commit fraud or other crimes.   
+4. *Fraud:* Using the internet to scam people out of their money or personal information.   
+5. *Cyberstalking:* Harassment or bullying through electronic means.    
+6. *Child pornography:* Using the internet to distribute or view child pornography.   
+7. *Ransomware:* A type of malware that encrypts a victim's files and demands payment to restore access.   
+8. *Crypto jacking:* Unauthorized use of someone's computer or device to mine cryptocurrency.   
+9. *Distributed Denial of Service (DDoS) attacks:* Overwhelming a website or network with traffic to make it unavailable.        
+10. *Spamming:* Sending unsolicited messages through email or other means
+
+
+
+## Cyber Crimes State-Wise:
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, message=FALSE, echo=FALSE}
+rm(list = ls())
+source("vizppt.R")
+dml(ggobj = states)
+```
+## Cyber Crime Rates State-Wise:
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = states.rates)
+```
+
+
+
+## Major States
+
+- For the year 2020, **71.72579 %** of the total cyber crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam. However, they contributed to almost 36% of the Indian Population.
+
+- For the year 2021, **71.12168 %** of the total cyber-crimes reported in the country India in 2021 came only from the five states: Telangana, Uttar Pradesh, Karnataka, Maharashtra and Assam. However, they together contributed almost 36% of the Indian Population.
+
+
+## Telangana
+
+```{r layout='Title and Content', ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+rm(list = ls())
+source("viz2021.R")
+dml(ggobj = trend_plot(statelist$Telangana,  paste("Cyber Crime Trend",nam[1],"2017 - 2021"), statelist$Telangana$cases, "No. of Cyber Crimes Registered") )
+
+```
+
+```{r layout='Title and Content', ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$Telangana,  paste("Cyber Crime Rates Trend",nam[1],"2017 - 2021"), statelist$Telangana$rates, "No. of Cyber Crimes Registered per 1 lakh population") )
+
+```
+
+## Karnataka
+
+```{r layout='Title and Content', ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$Karnataka,  paste("Cyber Crime Trend",nam[2],"2017 - 2021"), statelist$Karnataka$cases, "No. of Cyber Crimes Registered") )
+
+```
+
+```{r layout='Title and Content', ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$Karnataka,  paste("Cyber Crime Rates Trend",nam[2],"2017 - 2021"), statelist$Karnataka$rates, "No. of Cyber Crimes Registered per 1 lakh population") )
+
+```
+
+## Maharashtra
+
+```{r layout='Title and Content', ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$Maharashtra,  paste("Cyber Crime Trend",nam[3],"2017 - 2021"), statelist$Maharashtra$cases, "No. of Cyber Crimes Registered") )
+
+```
+
+```{r layout='Title and Content', ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$Maharashtra,  paste("Cyber Crime Rates Trend",nam[3],"2017 - 2021"), statelist$Maharashtra$rates, "No. of Cyber Crimes Registered per 1 lakh population") )
+
+```
+
+## Assam
+
+```{r layout='Title and Content', ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$Assam,  paste("Cyber Crime Trend",nam[4],"2017 - 2021"), statelist$Assam$cases, "No. of Cyber Crimes Registered") )
+
+```
+
+```{r layout='Title and Content', ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$Assam,  paste("Cyber Crime Rates Trend",nam[4],"2017 - 2021"), statelist$Assam$rates, "No. of Cyber Crimes Registered per 1 lakh population") )
+
+```
+
+## Uttar Pradesh
+
+```{r layout='Title and Content', ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$`Uttar Pradesh`,  paste("Cyber Crime Trend",nam[5],"2017 - 2021"), statelist$`Uttar Pradesh`$cases, "No. of Cyber Crimes Registered") )
+
+```
+
+```{r layout='Title and Content', ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trend_plot(statelist$`Uttar Pradesh`,  paste("Cyber Crime Rates Trend",nam[5],"2017 - 2021"), statelist$`Uttar Pradesh`$rates, "No. of Cyber Crimes Registered per 1 lakh population") )
+
+```
+
+
+## Cyber Crimes U.T. - wise
+
+
+```{r layout='Title and Content', ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = barut2020_21)
+```
+
+
+```{r layout='Title and Content', ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = barut2020_21r)
+```
+
+
+## Chandigarh
+
+```{r layout='Title and Content', ph=officer::ph_location_left(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trendchd)
+```
+
+
+```{r layout='Title and Content', ph=officer::ph_location_right(), warning=FALSE, message=FALSE, echo=FALSE}
+dml(ggobj = trendchdrate)
+```
+
+
+## Cyber Crime Trend and Forecast - India
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+source("cybertrend.R")
+dml(ggobj = cyber_trend) 
+```
+
+
+## Measurement of Secular Trend by Mathematical Curve Fitting
+
+The cyber crime  prediction for the coming years can be done using the following fitted model:
+
+$$\log(Y_t) = 4.99265  + 0.29710  \ t$$
+or
+$$Y_t = \exp(4.99265 + 0.29710  \ t)$$
+where:      
+t $\geq$ 1        
+$Y_t$ : Predicted Cyber Crimes in India for the year $(2001 + t)$
+
+
+
+## Model Summary
+
+
+```{r layout='Title and Content', warning=FALSE, echo=FALSE, message=FALSE}
+summary(model5)
+```
+
+## Model Fit
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = fitplot2)
+```
+
+
+## Future Predictions
+
+The Cyber Crimes predicted for the coming years using the above model are:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+creg.prediction
+```
+
+
+## QQ Plot of Residuals
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = crimeres)
+```
+
+## Normality Tests
+
+### Shapiro-Wilk Normality Test
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+shapiro.test(ress$crimes)
+```
+
+### Kolmogorov Smirnov Goodness of fit Test
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+ks.test(ress$crimes, y = "pnorm" )
+```
+
+
+### Anderson Darling Test
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+library(nortest)
+ad.test(ress$crimes)
+```
+
+
+
+## Cyber Crime Rates
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = cyber_trendr) 
+```
+
+
+
+## Measurement of Secular Trend by Mathematical Curve Fitting       
+
+The cyber crime  prediction for the coming years can be done using the following fitted model:
+
+$$\log(Y_t) = -4.26073 + 0.28345 \ t$$
+or
+$$Y_t = \exp(-4.26073 + 0.28345 \ t)$$
+where:      
+t $\geq$ 1        
+$Y_t$ : Predicted Cyber Crime Rate in India for the year $(2001 + t)$
+
+## Model Summary
+
+
+```{r layout='Title and Content', warning=FALSE, echo=FALSE, message=FALSE}
+summary(model4)
+```
+
+## Model Fit
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = fitplot)
+```
+
+
+## Future Predictions
+
+The Cyber Crimes predicted for the coming years using the above model are:
+
+```{r,warning=FALSE, echo=FALSE, message=FALSE}
+rate.prediction
+```
+
+## QQ Plot of Residuals
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = rateres)
+```
+
+## Normality Tests
+
+### Shapiro-Wilk Normality Test
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+shapiro.test(ress$rate)
+```
+
+### Kolmogorov Smirnov Goodness of fit Test
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+ks.test(ress$rate, y = "pnorm" )
+```
+
+
+### Anderson Darling Test
+
+```{r,  warning=FALSE, echo=FALSE, message=FALSE}
+library(nortest)
+ad.test(ress$rate)
+```
+
+
+## Percentage Increase Trend
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = cyber_trendp)
+```
+
+
+## Internet User Base of India
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = net_usep)
+```
+
+
+## Cyber Crime Motives
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+source("vizppt.R")
+dml(ggobj = motives)
+```
+
+
+## Cluster Analysis
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+source("clusterana.R")
+as.data.frame(dist[1:3, 1:3])
+```
+
+
+## Optimum Number of Clusters
+
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"), warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = wssplot)
+```
+
+
+## K-Means Clustering
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"),, warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = clusplot)
+```
+
+## Agglomerative Clustering
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"),, warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = aglodend)
+```
+
+
+## Agglomerative Clustering
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"),, warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = aglocp)
+```
+
+## Divisive Clustering
+
+```{r layout='Title and Content', ph=officer::ph_location_type(type="body"),, warning=FALSE, echo=FALSE, message=FALSE}
+dml(ggobj = dianadend)
+```
+
+
+## Summary
+
+Using all the three techniques, the number of clusters formed = 2. The cluster assignments by Agglomerative and Divisive techniques are almost the same as that of K-Means Clustering except the following:   
+
+- The state of Rajasthan goes to the Cluster 2 using Agglomerative and Divisive
+techniques.       
+
+- The state of Uttar Pradesh goes to the Cluster 2 using Divisive technique.
+
+
+
+
